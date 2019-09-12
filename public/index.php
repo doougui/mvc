@@ -4,10 +4,13 @@
 	require_once('../config/config.php');
 	require_once('../src/vendor/autoload.php');
 
-	echo "<pre>";
-	echo DIRPAGE.'<br>';
-	echo DIRREQ.'<br>';
-	echo DIRIMG.'<br>';
-	?>
+	use Src\Classes\ClassRoutes;
 
-	<img src="<?= DIRIMG."imagem.jpg" ?>" width="400" alt="Imagem">
+	class Teste extends ClassRoutes {
+		public function __construct() {
+			$v = $this -> getRota();
+			var_dump($v);
+		}
+	}
+
+	$new = new Teste();
