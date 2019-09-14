@@ -12,11 +12,10 @@
 		private $url;
 
 		# Getters e Setters
-		protected function getMethod() {return $this -> method; }
-		public function setMethod($method) {$this -> method = $method; }
-
-		protected function getParam() {return $this -> param; }
-		public function setParam($param) {$this -> param = $param; }
+		protected function getMethod() { return $this -> method; }
+		public function setMethod($method) { $this -> method = $method; }
+		protected function getParam() { return $this -> param; }
+		public function setParam($param) { $this -> param = $param; }
 
 		# Método Construtor
 		public function __construct() {
