@@ -16,7 +16,8 @@
 			$this -> rota = array(
 				"" => "ControllerHome",
 				"home" => "ControllerHome",
-				"sitemap" => "ControllerSitemap"
+				"sitemap" => "ControllerSitemap",
+				"carro" => "ControllerCarros"
 			);
 
 			if (array_key_exists($I, $this -> rota)) {
