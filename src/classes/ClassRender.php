@@ -23,20 +23,31 @@
 			include_once(DIRREQ.'app/view/Layout.php');
 		}
 
+		# Adiciona características específicas no head
+		public function addHead() {
+			if (file_exists(DIRREQ."app/view/{$this -> getDir()}/head.php")) {
+				include(DIRREQ."app/view/{$this -> getDir()}/head.php");
+			}
+		}
+
 		# Adiciona características específicas no header
 		public function addHeader() {
-			if (file_exists(DIRREQ."app/view/{$this -> getDir()}/main.php")) {
-				include(DIRREQ."app/view/{$this -> getDir()}/main.php");
+			if (file_exists(DIRREQ."app/view/{$this -> getDir()}/header.php")) {
+				include(DIRREQ."app/view/{$this -> getDir()}/header.php");
 			}
 		}
 
 		# Adiciona características específicas no main
 		public function addMain() {
-
+			if (file_exists(DIRREQ."app/view/{$this -> getDir()}/main.php")) {
+				include(DIRREQ."app/view/{$this -> getDir()}/main.php");
+			}
 		}
 
 		# Adiciona características específicas no footer
 		public function addFooter() {
-
+			if (file_exists(DIRREQ."app/view/{$this -> getDir()}/footer.php")) {
+				include(DIRREQ."app/view/{$this -> getDir()}/footer.php");
+			}
 		}
 	}
