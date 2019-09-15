@@ -11,9 +11,14 @@
 	<?= $this -> addHead() ?>
 </head>
 <body>
+	<nav>
+		<a href="<?= DIRPAGE ?>">Home</a>	
+		<a href="<?= DIRPAGE.'contato' ?>">Contato</a>	
+	</nav>
+
 	<header>
-		<a href="<?= DIRPAGE; ?>">Home</a>
-		<a href="<?= DIRPAGE.'contato'; ?>">Contato</a>
+		<img src="<?= DIRIMG.'holanda.jpg' ?>" width="100%" alt="Banner">
+		<p>Tel: (48) 99999-9999</p>
 		<?= $this -> addHeader() ?>
 	</header>
 

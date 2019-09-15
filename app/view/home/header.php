@@ -1,1 +1,0 @@
-<a href="<?= DIRPAGE.'logar'; ?>">Login</a>
