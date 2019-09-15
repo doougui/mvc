@@ -18,6 +18,11 @@
 
 	<header>
 		<img src="<?= DIRIMG.'holanda.jpg' ?>" width="100%" alt="Banner">
+		<?php 
+			$breadcrump = new Src\Classes\ClassBreadcrumb();
+			$breadcrump -> addBreadcrump();
+		?>
+		<br><hr>
 		<p>Tel: (48) 99999-9999</p>
 		<?= $this -> addHeader() ?>
 	</header>
