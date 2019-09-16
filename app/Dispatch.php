@@ -24,15 +24,19 @@
 		}
 
 		# Método de adição do Controller
-		private function addController() {
-			$rotaController = $this -> getRota();
-			$nameS = "App\\Controller\\{$rotaController}";
+		private function addController($method_exists = true) {
+			if ($method_exists == true) {
+				$rotaController = $this -> getRota();
+				$nameS = "App\\Controller\\{$rotaController}";
+
+				if (isset($this -> url[1])) {
+					self::addMethod();
+				}
+			} else {
+				$nameS = "App\\Controller\\Controller404";
+			}
 
 			$this -> obj = new $nameS;
-
-			if (isset($this -> url[1])) {
-				self::addMethod();
-			}
 		}
 
 		# Método de adição de método do Controller
@@ -41,6 +45,8 @@
 				$this -> setMethod($this -> url[1]);
 				self::addParam();
 				call_user_func_array([$this -> obj, $this -> getMethod()], $this -> getParam());
+			} else {
+				self::addController(false);
 			}
 		}
 
