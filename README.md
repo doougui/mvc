@@ -10,7 +10,7 @@ Coisas que precisam ser feitas/melhoradas:
   - Fazer navegação utilizando slug :x:
 
 
-## :mailbox_with_mail: License 
+## :mailbox_with_mail: Licença
 
 Sinta-se livre para usar e testar. Quanto mais pessoas contribuírem, melhor!
 
