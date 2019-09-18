@@ -8,6 +8,8 @@ Coisas que precisam ser feitas/melhoradas:
   - Arrumar o parser para remover as / no final da URL :x:
   - Refazer os Breadcrumps com sistema de dicionário :x:
   - Fazer navegação utilizando slug :x:
+  - Adicionar array de dados no renderLayout() :x:
+  - Arrumar sistema de rotas :x:
 
 
 ## :mailbox_with_mail: Licença
