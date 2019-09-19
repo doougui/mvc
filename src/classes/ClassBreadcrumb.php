@@ -9,7 +9,7 @@
 			$contador = count($this -> parseUrl());
 			$arrayLink[0] = '';
 
-			echo "<a href='".DIRPAGE."'>Home</a> >";
+			echo "<a href='".DIRPAGE."'>Home</a> > ";
 
 			for ($i = 0; $i < $contador; $i++) { 
 				$arrayLink[0] .= $this -> parseUrl()[$i].'/';

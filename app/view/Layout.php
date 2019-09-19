@@ -14,6 +14,7 @@
 	<nav>
 		<a href="<?= DIRPAGE ?>">Home</a>	
 		<a href="<?= DIRPAGE.'contato' ?>">Contato</a>	
+		<a href="<?= DIRPAGE.'cadastro' ?>">Cadastro</a>	
 	</nav>
 
 	<header>
