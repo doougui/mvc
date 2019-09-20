@@ -35,3 +35,6 @@
 
 	<input type="submit" value="Pesquisar">
 </form>
+
+<!-- Responsável por receber a tabela de pesquisa -->
+<div class="resultado" style="width: 100%; height: 300px; background-color: #7ed6df;"></div>

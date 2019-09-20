@@ -7,22 +7,28 @@
 
 	class ControllerCadastro extends ClassCadastro {
 
+		protected $id;
 		protected $nome;
 		protected $sexo;
 		protected $cidade;
 
-		public function __construct() {
-			$render = new ClassRender();
+		use \Src\Traits\TraitUrlParser;
 
-			$render -> setDir('cadastro');
-			$render -> setTitle('MVC - Cadastro');
-			$render -> setDescription('Cadastro de clientes da estrutura MVC.');
-			$render -> setKeywords('cadastro de clientes, cadastro');
-			$render -> renderLayout();
+		public function __construct() {
+			if (count($this -> parseUrl()) === 1) {
+				$render = new ClassRender();
+
+				$render -> setDir('cadastro');
+				$render -> setTitle('MVC - Cadastro');
+				$render -> setDescription('Cadastro de clientes da estrutura MVC.');
+				$render -> setKeywords('cadastro de clientes, cadastro');
+				$render -> renderLayout();
+			}
 		}
 
 		# Recebe as variáveis
 		public function recVariaveis() {
+			if (isset($_POST['id'])) { $this -> id = $_POST['id']; }
 			if (isset($_POST['nome'])) { $this -> nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS); }
 			if (isset($_POST['sexo'])) { $this -> sexo = filter_input(INPUT_POST, 'sexo', FILTER_SANITIZE_SPECIAL_CHARS); }
 			if (isset($_POST['cidade'])) { $this -> cidade = filter_input(INPUT_POST, 'cidade', FILTER_SANITIZE_SPECIAL_CHARS); } 
@@ -41,11 +47,13 @@
 			$b = $this -> selecionaClientes($this -> nome, $this -> sexo, $this -> cidade);
 
 			echo "
+			<form name='formDeletar' id='formDeletar' action='".DIRPAGE."cadastro/deletar' method='POST'>
 			<table border='1'>
 				<tr>
 					<td>Nome</td>
 					<td>Sexo</td>
 					<td>Cidade</td>
+					<td>Ação</td>
 				</tr>
 			";
 
@@ -55,11 +63,22 @@
 					<td>$c[nome]</td>
 					<td>$c[sexo]</td>
 					<td>$c[cidade]</td>
+					<td><input type='checkbox' id='id' name='id[]' value='$c[id]'></td>
 				</tr>
 				";
 			}
 
 			echo "
-			</table>";
+			</table>
+			<input type='submit' value='Deletar'>
+			</form>";
+		}
+
+		# Deletar dados o banco de dados
+		public function deletar() {
+			$this -> recVariaveis();
+			foreach ($this -> id as $idDeletar) {
+				$this -> deletarClientes($idDeletar);
+			}
 		}
 	}

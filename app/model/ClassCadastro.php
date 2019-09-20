@@ -34,10 +34,18 @@
 			$array = array();
 			$I = 0;
 			while ($fetch = $bfetch -> fetch(\PDO::FETCH_ASSOC)) {
-				$array[$I] = ['nome' => $fetch['nome'], 'sexo' => $fetch['sexo'], 'cidade' => $fetch['cidade']];
+				$array[$I] = ['id' => $fetch['id'], 'nome' => $fetch['nome'], 'sexo' => $fetch['sexo'], 'cidade' => $fetch['cidade']];
 				$I++;
 			}
 
 			return $array;
+		}
+
+		# Deletar direto no banco
+		protected function deletarClientes($id) {
+			$bfetch = $this -> db = $this -> conexaoDB() -> prepare("
+				DELETE FROM usuario WHERE id = :id");
+			$bfetch -> bindParam(':id', $id, \PDO::PARAM_INT);
+			$bfetch -> execute();
 		}
 	}
