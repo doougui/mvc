@@ -24,17 +24,13 @@
 		}
 
 		# Método de adição do Controller
-		private function addController($method_exists = true) {
-			if ($method_exists == true) {
-				$rotaController = $this -> getRota();
-				$nameS = "App\\Controller\\{$rotaController}";
-			} else {
-				$nameS = "App\\Controller\\Controller404";
-			}
+		private function addController() {
+			$rotaController = $this -> getRota();
+			$nameS = "App\\Controller\\{$rotaController}";
 
 			$this -> obj = new $nameS;
 
-			if (isset($this -> url[1]) && $nameS != "App\\Controller\\Controller404") {
+			if (isset($this -> url[1])) {
 				self::addMethod();
 			}
 		}
@@ -44,10 +40,7 @@
 			if (method_exists($this -> obj, $this -> url[1])) {
 				$this -> setMethod($this -> url[1]);
 				self::addParam();
-				# tem q revisar isso aq
 				call_user_func_array([$this -> obj, $this -> getMethod()], $this -> getParam());
-			} else {
-				self::addController(false);
 			}
 		}
 

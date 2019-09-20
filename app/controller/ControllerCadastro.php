@@ -31,7 +31,35 @@
 		# Chamar o método de cadastro da ClassCadastro
 		public function cadastrar() {
 			$this -> recVariaveis();
-			parent::cadastroClientes($this -> nome, $this -> sexo, $this -> cidade);
+			$this -> cadastroClientes($this -> nome, $this -> sexo, $this -> cidade);
 			echo "Cadastro efetuado com sucesso!";
+		}
+
+		# Selecionar e exibir os dados do banco de dados
+		public function seleciona() {
+			$this -> recVariaveis();
+			$b = $this -> selecionaClientes($this -> nome, $this -> sexo, $this -> cidade);
+
+			echo "
+			<table border='1'>
+				<tr>
+					<td>Nome</td>
+					<td>Sexo</td>
+					<td>Cidade</td>
+				</tr>
+			";
+
+			foreach ($b as $c) {
+				echo "
+				<tr>
+					<td>$c[nome]</td>
+					<td>$c[sexo]</td>
+					<td>$c[cidade]</td>
+				</tr>
+				";
+			}
+
+			echo "
+			</table>";
 		}
 	}
