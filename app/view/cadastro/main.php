@@ -38,3 +38,11 @@
 
 <!-- Responsável por receber a tabela de pesquisa -->
 <div class="resultado" style="width: 100%; height: 300px; background-color: #7ed6df;"></div>
+
+<br><br>
+<hr>
+<br><br>
+
+<h1>Formulário de Atualizações</h1>
+
+<div class="resultadoFormulario"></div>

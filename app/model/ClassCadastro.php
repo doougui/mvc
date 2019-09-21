@@ -48,4 +48,19 @@
 			$bfetch -> bindParam(':id', $id, \PDO::PARAM_INT);
 			$bfetch -> execute();
 		}
+
+		# Atualização direto no banco
+		protected function atualizarClientes($id, $nome, $sexo, $cidade) {
+			$bfetch = $this -> db = $this -> conexaoDB() -> prepare("
+				UPDATE usuario SET
+				nome = :nome,
+				sexo = :sexo,
+				cidade = :cidade
+				WHERE id = :id");
+			$bfetch -> bindParam(':id', $id, \PDO::PARAM_INT);
+			$bfetch -> bindParam(':nome', $nome, \PDO::PARAM_STR);
+			$bfetch -> bindParam(':sexo', $sexo, \PDO::PARAM_STR);
+			$bfetch -> bindParam(':cidade', $cidade, \PDO::PARAM_STR);
+			$bfetch -> execute();
+		}
 	}

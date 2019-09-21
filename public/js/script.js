@@ -13,4 +13,19 @@ $(document).ready(function() {
 			}
 		});
 	});
+
+
+	$(document).on('click', '.imageEdit', function() {
+		var imgRel = $(this).attr('rel');
+		
+		$.ajax({
+			url: DIRPAGE + 'cadastro/puxaDB/' + imgRel,
+			method: 'POST',
+			dataType: 'html',
+			data: {'id': imgRel},
+			success: function(data) {
+				$('.resultadoFormulario').html(data);
+			}
+		});
+	});
 });

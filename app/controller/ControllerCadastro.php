@@ -63,7 +63,7 @@
 					<td>$c[nome]</td>
 					<td>$c[sexo]</td>
 					<td>$c[cidade]</td>
-					<td><input type='checkbox' id='id' name='id[]' value='$c[id]'></td>
+					<td><input type='checkbox' id='id' name='id[]' value='$c[id]'><img class='imageEdit' rel='$c[id]' width='15' src='".DIRIMG."edit.png' alt='Editar'></td>
 				</tr>
 				";
 			}
@@ -80,5 +80,47 @@
 			foreach ($this -> id as $idDeletar) {
 				$this -> deletarClientes($idDeletar);
 			}
+		}
+
+		# Puxando dados do banco de dados
+		public function puxaDB($id) {
+			$this -> recVariaveis();
+			$b = $this -> selecionaClientes($this -> nome, $this -> sexo, $this -> cidade);
+
+			foreach ($b as $c) {
+				if ($c['id'] == $id) {
+					$nome = $c['nome'];
+					$sexo = $c['sexo'];
+					$cidade = $c['cidade'];
+				}	
+			}
+
+			echo "
+				<form name='formAtualizar' id='formAtualizar' method='POST' action='".DIRPAGE."cadastro/atualizar' ?>'
+
+					<input type='hidden' name='id' id='id' value='{$id}'><br><br>
+
+					<label for='nome'><strong>Nome</strong></label><br>
+					<input type='text' name='nome' id='nome' value='{$nome}'><br><br>
+
+					<label for='cidade'><strong>Cidade</strong></label><br>
+					<input type='text' name='cidade' id='cidade' value='{$cidade}'><br><br>
+
+					<label for='sexo'><strong>Sexo</strong></label><br>
+					<select name='sexo' id='sexo'>
+						<option value='Masculino'>Masculino</option>
+						<option value='Feminino'>Feminino</option>
+					</select><br><br>
+
+					<input type='submit' value='Atualizar'>
+				</form>
+			";
+		}
+
+		# Atualizar dados dos clientes
+		public function atualizar() {
+			$this -> recVariaveis();
+			$this -> atualizarClientes($this -> id, $this -> nome, $this -> sexo, $this -> cidade);
+			echo "Usuário atualizado com sucesso!";
 		}
 	}
