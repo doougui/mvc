@@ -8,34 +8,48 @@
 	<meta name="keywords" content="<?= $this -> getKeywords() ?>">
 	<title><?= $this -> getTitle() ?></title>
 	<link rel="stylesheet" href="<?= DIRCSS.'style.css' ?>">
-	<?= $this -> addHead() ?>
+	<?= $this -> addExtraHead() ?>
 </head>
 <body>
+	<br>
 	<nav>
 		<a href="<?= DIRPAGE ?>">Home</a>	
 		<a href="<?= DIRPAGE.'contato' ?>">Contato</a>	
 		<a href="<?= DIRPAGE.'cadastro' ?>">Cadastro</a>	
 		<a href="<?= DIRPAGE.'login' ?>">Login</a>	
 	</nav>
+	
+	<br>
+	<hr>
+	<br>
 
 	<header>
-		<img src="<?= DIRIMG.'holanda.jpg' ?>" width="100%" alt="Banner">
 		<?php 
 			$breadcrump = new Src\Classes\ClassBreadcrumb();
 			$breadcrump -> addBreadcrump();
 		?>
-		<br><hr>
+		<br>
 		<p>Tel: (48) 99999-9999</p>
-		<?= $this -> addHeader() ?>
+		<?= $this -> addExtraHeader() ?>
 	</header>
 
+	<br>
+	<hr>
+	<br>
+
 	<main>
-		<?= $this -> addMain() ?>
+		<br>
+		<?= $this -> addMainContent($data) ?>
+		<br>
 	</main>
+	
+	<br>
+	<hr>
+	<br>
 
 	<footer>
 		<p>2019 - TODOS OS DIREITOS RESERVADOS</p><br>
-		<?= $this -> addFooter() ?>
+		<?= $this -> addExtraFooter() ?>
 	</footer>
 </body>
 </html>

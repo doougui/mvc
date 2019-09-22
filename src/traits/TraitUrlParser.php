@@ -2,8 +2,15 @@
 	namespace Src\Traits;
 
 	trait TraitUrlParser {
-		# Divide a URL em um array
+		// Splits the URL into an array
 		public function parseUrl() {
-			return explode('/', rtrim($_GET['url']), FILTER_SANITIZE_URL);
+			$url = '';
+
+			if (isset($_GET['url'])) {
+				$url .= $_GET['url'];
+				$url = explode('/', $url);
+			}
+
+			return $url;
 		}
 	}

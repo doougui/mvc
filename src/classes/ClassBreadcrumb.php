@@ -4,8 +4,8 @@
 	class ClassBreadcrumb {
 		use \Src\Traits\TraitUrlParser;
 
-		# Cria os breadcrumps do site
-		public function addBreadcrump() {
+		// Create breadbrumbs
+		public function addBreadcrumb() {
 			$contador = count($this -> parseUrl());
 			$arrayLink[0] = '';
 

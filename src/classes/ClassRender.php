@@ -2,52 +2,54 @@
 	namespace Src\Classes;
 
 	class ClassRender {
-
-		# Propriedades
+		
+		// Properties
 		private $dir;
 		private $title;
 		private $description;
 		private $keywords;
 
-		public function getDir() { return $this->dir; }
-		public function setDir($dir) { $this->dir = $dir; }
-		public function getTitle() { return $this->title; }
-		public function setTitle($title) { $this->title = $title; }
-		public function getDescription() { return $this->description; }
-		public function setDescription($description) { $this->description = $description; }
-		public function getKeywords() { return $this->keywords; }
-		public function setKeywords($keywords) { $this->keywords = $keywords; }
+		public function getDir() { return $this -> dir; }
+		public function setDir($dir) { $this -> dir = $dir; }
+		public function getTitle() { return $this -> title; }
+		public function setTitle($title) { $this -> title = $title; }
+		public function getDescription() { return $this -> description; }
+		public function setDescription($description) { $this -> description = $description; }
+		public function getKeywords() { return $this -> keywords; } 
+		public function setKeywords($keywords) { $this -> keywords = $keywords; }
 
-		# Método responsável por renderizar o layout
-		public function renderLayout() {
-			include_once(DIRREQ.'app/view/Layout.php');
+		// Method responsible for rendering layout
+		public function renderLayout($data = array()) {
+			extract($data);
+			include_once(DIRREQ.'app/Views/Layout.php');
 		}
 
-		# Adiciona características específicas no head
-		public function addHead() {
-			if (file_exists(DIRREQ."app/view/{$this -> getDir()}/head.php")) {
-				include(DIRREQ."app/view/{$this -> getDir()}/head.php");
+		// Add specific head features
+		public function addExtraHead() {
+			if (file_exists(DIRREQ."app/Views/{$this -> getDir()}/head.php")) {
+				include(DIRREQ."app/Views/{$this -> getDir()}/head.php");
 			}
 		}
 
-		# Adiciona características específicas no header
-		public function addHeader() {
-			if (file_exists(DIRREQ."app/view/{$this -> getDir()}/header.php")) {
-				include(DIRREQ."app/view/{$this -> getDir()}/header.php");
+		// Add specific header features
+		public function addExtraHeader() {
+			if (file_exists(DIRREQ."app/Views/{$this -> getDir()}/header.php")) {
+				include(DIRREQ."app/Views/{$this -> getDir()}/header.php");
 			}
 		}
 
-		# Adiciona características específicas no main
-		public function addMain() {
-			if (file_exists(DIRREQ."app/view/{$this -> getDir()}/main.php")) {
-				include(DIRREQ."app/view/{$this -> getDir()}/main.php");
+		// Add main content
+		public function addMainContent($data = array()) {
+			if (file_exists(DIRREQ."app/Views/{$this -> getDir()}/main.php")) {
+				extract($data);
+				include(DIRREQ."app/Views/{$this -> getDir()}/main.php");
 			}
 		}
 
-		# Adiciona características específicas no footer
-		public function addFooter() {
-			if (file_exists(DIRREQ."app/view/{$this -> getDir()}/footer.php")) {
-				include(DIRREQ."app/view/{$this -> getDir()}/footer.php");
+		// Add specific footer features
+		public function addExtraFooter() {
+			if (file_exists(DIRREQ."app/Views/{$this -> getDir()}/footer.php")) {
+				include(DIRREQ."app/Views/{$this -> getDir()}/footer.php");
 			}
 		}
 	}

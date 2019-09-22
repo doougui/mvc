@@ -1,15 +1,17 @@
 <?php 
-	# Arquivos, diretórios e raizes.
-	$pasta_interna = "mvc_webdesignemfoco/";
-	define('DIRPAGE',"http://{$_SERVER['HTTP_HOST']}/{$pasta_interna}");
+	require('environment.php');
+
+	// Files, folders, etc
+	$inner_folder = "estrutura_mvc/";
+	define('DIRPAGE',"http://{$_SERVER['HTTP_HOST']}/{$inner_folder}");
 
 	if (substr($_SERVER['DOCUMENT_ROOT'], -1) == '/') {
-		define('DIRREQ', "{$_SERVER['DOCUMENT_ROOT']}{$pasta_interna}");
+		define('DIRREQ', "{$_SERVER['DOCUMENT_ROOT']}{$inner_folder}");
 	} else {
-		define('DIRREQ', "{$_SERVER['DOCUMENT_ROOT']}/{$pasta_interna}");
+		define('DIRREQ', "{$_SERVER['DOCUMENT_ROOT']}/{$inner_folder}");
 	}
 
-	# Diretórios Específicos
+	// Global folders
 	define('DIRIMG', DIRPAGE."public/img/");
 	define('DIRCSS', DIRPAGE."public/css/");
 	define('DIRJS', DIRPAGE."public/js/");
@@ -17,10 +19,18 @@
 	define('DIRAUD', DIRPAGE."public/audio/");
 	define('DIRFONT', DIRPAGE."public/fontes/");
 	define('DIRDESIGN', DIRPAGE."public/design/");
-	define('DIRADM', DIRPAGE."public/admin/");
 
-	# Acesso ao banco de dados
-	define('HOST', "localhost");
-	define('DB', "mvc_completo");
-	define('USER', "root");
-	define('PASS', "");
+	// Database connection
+	$config = array();
+
+	if (ENVIRONMENT == 'development') {
+		$config['dbname'] = 'estrutura_mvc';
+		$config['host'] = 'localhost';
+		$config['dbuser'] = 'root';
+		$config['dbpass'] = '';
+	} else {
+		$config['dbname'] = 'estrutura_mvc';
+		$config['host'] = 'localhost';
+		$config['dbuser'] = 'root';
+		$config['dbpass'] = '';
+	}
