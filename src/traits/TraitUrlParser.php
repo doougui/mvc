@@ -8,8 +8,9 @@
 
 			if (isset($_GET['url'])) {
 				$url .= $_GET['url'];
-				$url = explode('/', $url);
 			}
+			
+			$url = explode('/', $url);
 
 			return $url;
 		}
