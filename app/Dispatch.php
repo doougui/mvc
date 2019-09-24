@@ -9,7 +9,7 @@
 			$url = $this -> parseUrl();
 			$params = array();
 
-			if (!empty($url[0]) && $url[0] != '/') {
+			if (!empty($url)) {
 				$currentController = $url[0].'Controller';
 				array_shift($url);
 
@@ -21,11 +21,7 @@
 				}
 
 				if (count($url) > 0) {
-					foreach ($url as $param) {
-						if (!empty($param) && $param != '/') {
-							$params[] .= $param;
-						}
-					}
+					$params[] = $url;
 				}
 			} else {
 				$currentController = 'HomeController';
@@ -44,7 +40,7 @@
 
 			$newController = $prefix.$currentController;
 
-			$c = new $newController();
-			call_user_func_array(array($c, $currentAction), $params);
+			$controller = new $newController();
+			call_user_func_array(array($controller, $currentAction), $params);
 		}
 	}

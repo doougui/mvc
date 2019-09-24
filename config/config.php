@@ -2,13 +2,13 @@
 	require('environment.php');
 
 	// Files, folders, etc
-	$inner_folder = "estrutura_mvc/";
-	define('DIRPAGE',"http://{$_SERVER['HTTP_HOST']}/{$inner_folder}");
+	$innerFolder = "estrutura_mvc/";
+	define('DIRPAGE',"http://{$_SERVER['HTTP_HOST']}/{$innerFolder}");
 
 	if (substr($_SERVER['DOCUMENT_ROOT'], -1) == '/') {
-		define('DIRREQ', "{$_SERVER['DOCUMENT_ROOT']}{$inner_folder}");
+		define('DIRREQ', "{$_SERVER['DOCUMENT_ROOT']}{$innerFolder}");
 	} else {
-		define('DIRREQ', "{$_SERVER['DOCUMENT_ROOT']}/{$inner_folder}");
+		define('DIRREQ', "{$_SERVER['DOCUMENT_ROOT']}/{$innerFolder}");
 	}
 
 	// Global folders
