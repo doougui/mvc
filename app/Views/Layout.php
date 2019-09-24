@@ -8,7 +8,7 @@
 	<meta name="keywords" content="<?= $this -> getKeywords() ?>">
 	<title><?= $this -> getTitle() ?></title>
 	<link rel="stylesheet" href="<?= DIRCSS.'style.css' ?>">
-	<?= $this -> addExtraHead() ?>
+	<?= $this -> addExtraHead($data) ?>
 </head>
 <body>
 	<br>
@@ -30,7 +30,7 @@
 		?>
 		<br>
 		<p>Tel: (48) 99999-9999</p>
-		<?= $this -> addExtraHeader() ?>
+		<?= $this -> addExtraHeader($data) ?>
 	</header>
 
 	<br>
@@ -49,7 +49,7 @@
 
 	<footer>
 		<p>2019 - TODOS OS DIREITOS RESERVADOS</p><br>
-		<?= $this -> addExtraFooter() ?>
+		<?= $this -> addExtraFooter($data) ?>
 	</footer>
 </body>
 </html>

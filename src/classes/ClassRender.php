@@ -25,15 +25,17 @@
 		}
 
 		// Add specific head features
-		public function addExtraHead() {
+		public function addExtraHead($data = array()) {
 			if (file_exists(DIRREQ."app/Views/{$this -> getDir()}/head.php")) {
+				extract($data);
 				include(DIRREQ."app/Views/{$this -> getDir()}/head.php");
 			}
 		}
 
 		// Add specific header features
-		public function addExtraHeader() {
+		public function addExtraHeader($data = array()) {
 			if (file_exists(DIRREQ."app/Views/{$this -> getDir()}/header.php")) {
+				extract($data);
 				include(DIRREQ."app/Views/{$this -> getDir()}/header.php");
 			}
 		}
@@ -47,8 +49,9 @@
 		}
 
 		// Add specific footer features
-		public function addExtraFooter() {
+		public function addExtraFooter($data = array()) {
 			if (file_exists(DIRREQ."app/Views/{$this -> getDir()}/footer.php")) {
+				extract($data);
 				include(DIRREQ."app/Views/{$this -> getDir()}/footer.php");
 			}
 		}

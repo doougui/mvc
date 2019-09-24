@@ -23,6 +23,7 @@
 			// Build the rest of the breadcrumbs
 			foreach ($path as $key => $crumb) {
 				// Our "title" is the text that will be displayed (strip out .php and turn '_' into a space)
+				// $title = preg_replace('/[0-9]+/', '', $crumb);
 				$title = ucwords(str_replace(array('.php', '_', '-'), array('', ' ', ''), $crumb));
 				
 				// If the title isn't empty
