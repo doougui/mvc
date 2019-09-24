@@ -26,7 +26,7 @@
 	<header>
 		<?php 
 			$breadcrump = new Src\Classes\ClassBreadcrumb();
-			$breadcrump -> addBreadcrumb();
+			echo $breadcrump -> addBreadcrumb();
 		?>
 		<br>
 		<p>Tel: (48) 99999-9999</p>
