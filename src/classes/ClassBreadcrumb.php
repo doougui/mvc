@@ -16,10 +16,11 @@
 			$last = end($pathkeys);
 
 			foreach ($path as $key => $crumb) {
-				$title = ucwords(str_replace(['.php', '_', '-'],['', ' ', ''], $crumb));
+				$title = ucwords(str_replace(['.php', '_', '-'],['', ' ', ' '], $crumb));
 				
     		if (!empty($title)) {
     			$currentHref .= $crumb.'/';
+    			
 	    		if ($key != $last) {
 			    	$breadcrumbs[] = "<a href='".$currentHref."'>".$title."</a>";
 	    		} else {
