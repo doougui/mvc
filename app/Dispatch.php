@@ -7,7 +7,7 @@
 		public function run() {
 
 			$url = $this -> parseUrl();
-			$params = array();
+			$params = [];
 
 			if (!empty($url)) {
 				$currentController = $url[0].'Controller';
@@ -41,6 +41,6 @@
 			$newController = $prefix.$currentController;
 
 			$controller = new $newController();
-			call_user_func_array(array($controller, $currentAction), $params);
+			call_user_func_array([$controller, $currentAction], $params);
 		}
 	}

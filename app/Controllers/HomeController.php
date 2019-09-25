@@ -6,7 +6,7 @@
 
 	class HomeController extends ClassRender implements InterfaceView {
 		public function index() {
-			$data = array();
+			$data = [];
 
 			$this -> setDir('Home');
 			$this -> setTitle('MVC - Home');

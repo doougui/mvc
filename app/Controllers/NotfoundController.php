@@ -6,7 +6,7 @@
 
 	class NotfoundController extends ClassRender implements InterfaceView {
 		public function index() {
-			$data = array();
+			$data = [];
 
 			$this -> setDir('404');
 			$this -> setTitle('MVC - Erro 404');

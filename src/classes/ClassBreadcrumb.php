@@ -7,40 +7,27 @@
 		// Create breadbrumbs
 		public function addBreadcrumb($separator = ' &raquo; ', $home = 'Home') {
 
-			// Gets the parsed URL
 			$path = $this -> parseUrl(); 
+			$currentHref = DIRPAGE; 
 
-			// Set the base url (it's the same variable set in config.php)
-			$base = DIRPAGE; 
+			$breadcrumbs = ["<a href='".$currentHref."'>".$home."</a>"];
 
-			// Initialize a temporary array with our breadcrumbs. (starting with our home page, which I'm assuming will be the base URL)
-			$breadcrumbs = array("<a href='".$base."'>".$home."</a>");
-
-			// Find out the index for the last value in our path array
 			$pathkeys = array_keys($path); 
 			$last = end($pathkeys);
 
-			// Build the rest of the breadcrumbs
 			foreach ($path as $key => $crumb) {
-				// Our "title" is the text that will be displayed (strip out .php and turn '_' into a space)
-				// $title = preg_replace('/[0-9]+/', '', $crumb);
-				$title = ucwords(str_replace(array('.php', '_', '-'), array('', ' ', ''), $crumb));
+				$title = ucwords(str_replace(['.php', '_', '-'],['', ' ', ''], $crumb));
 				
-				// If the title isn't empty
     		if (!empty($title)) {
-    			// If we are not on the last index, then display an <a> tag
+    			$currentHref .= $crumb.'/';
 	    		if ($key != $last) {
-			    	$breadcrumbs[] = "<a href='".$base.$crumb."'>".$title."</a>";
+			    	$breadcrumbs[] = "<a href='".$currentHref."'>".$title."</a>";
 	    		} else {
-	    			// Otherwise, just display the title
 						$breadcrumbs[] = $title;
 					}
-				} else {
-					// $key = $key - 1;
 				}
 			}
 
-			// Build our temporary array (pieces of bread) into one big string
 	    return implode($separator, $breadcrumbs);
 		}
 	}

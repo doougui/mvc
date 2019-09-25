@@ -21,7 +21,7 @@
 	define('DIRDESIGN', DIRPAGE."public/design/");
 
 	// Database connection
-	$config = array();
+	$config = [];
 
 	if (ENVIRONMENT == 'development') {
 		$config['dbname'] = 'estrutura_mvc';
