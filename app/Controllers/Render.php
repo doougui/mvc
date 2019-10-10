@@ -1,7 +1,7 @@
 <?php 
-	namespace Src\Classes;
-
-	class ClassRender {
+	namespace App\Controllers;
+	
+	class Render {
 		
 		// Properties
 		private $dir;

@@ -1,10 +1,10 @@
 <?php 
 	namespace App\Controllers;
 
-	use Src\Classes\ClassRender;
+	use App\Controllers\Render;
 	use Src\Interfaces\InterfaceView;
 
-	class NotfoundController extends ClassRender implements InterfaceView {
+	class NotfoundController extends Render implements InterfaceView {
 		public function index() {
 			$data = [];
 

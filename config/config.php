@@ -21,6 +21,7 @@
 	define('DIRDESIGN', DIRPAGE."public/design/");
 
 	// Database connection
+	global $config;
 	$config = [];
 
 	if (ENVIRONMENT == 'development') {
