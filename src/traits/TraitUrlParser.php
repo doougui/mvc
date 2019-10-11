@@ -6,8 +6,8 @@
 		public function parseUrl() {
 			$url = '/';
 
-			if (isset($_GET['url'])) {
-				$url .= $_GET['url'];
+			if (isset($_GET['route'])) {
+				$url .= $_GET['route'];
 			}
 			
 			$url = array_values(array_filter(explode('/', $url)));
