@@ -26,7 +26,7 @@ Coisas que precisam ser feitas/melhoradas:
   - Refazer os Breadcrumps :x:
   - Adicionar meta tags para um bom SEO :x:
 
-## Observações
+## :warning: Observações
 
 1. No arquivo `Dispatch.php`, é importante notar que, quando estiver criando as rotas, a rota dinâmica deve ir acima da rota fixa para funcionar.
 
