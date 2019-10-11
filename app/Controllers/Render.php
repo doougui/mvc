@@ -19,39 +19,39 @@
 		public function setKeywords($keywords) { $this -> keywords = $keywords; }
 
 		// Method responsible for rendering layout
-		public function renderLayout($data = []) {
-			extract($data);
+		public function renderLayout($viewData = []) {
+			extract($viewData);
 			include_once(DIRREQ.'app/Views/Layout.php');
 		}
 
 		// Add specific head features
-		public function addExtraHead($data = []) {
+		public function addExtraHead($viewData = []) {
 			if (file_exists(DIRREQ."app/Views/{$this -> getDir()}/head.php")) {
-				extract($data);
+				extract($viewData);
 				include(DIRREQ."app/Views/{$this -> getDir()}/head.php");
 			}
 		}
 
 		// Add specific header features
-		public function addExtraHeader($data = []) {
+		public function addExtraHeader($viewData = []) {
 			if (file_exists(DIRREQ."app/Views/{$this -> getDir()}/header.php")) {
-				extract($data);
+				extract($viewData);
 				include(DIRREQ."app/Views/{$this -> getDir()}/header.php");
 			}
 		}
 
 		// Add main content
-		public function addMainContent($data = []) {
+		public function addMainContent($viewData = []) {
 			if (file_exists(DIRREQ."app/Views/{$this -> getDir()}/main.php")) {
-				extract($data);
+				extract($viewData);
 				include(DIRREQ."app/Views/{$this -> getDir()}/main.php");
 			}
 		}
 
 		// Add specific footer features
-		public function addExtraFooter($data = []) {
+		public function addExtraFooter($viewData = []) {
 			if (file_exists(DIRREQ."app/Views/{$this -> getDir()}/footer.php")) {
-				extract($data);
+				extract($viewData);
 				include(DIRREQ."app/Views/{$this -> getDir()}/footer.php");
 			}
 		}

@@ -8,15 +8,13 @@
 	<meta name="keywords" content="<?= $this -> getKeywords() ?>">
 	<title><?= $this -> getTitle() ?></title>
 	<link rel="stylesheet" href="<?= DIRCSS.'style.css' ?>">
-	<?= $this -> addExtraHead($data) ?>
+	<?= $this -> addExtraHead($viewData) ?>
 </head>
 <body>
 	<br>
 	<nav>
 		<a href="<?= DIRPAGE ?>">Home</a>	
-		<a href="<?= DIRPAGE.'contato' ?>">Contato</a>	
-		<a href="<?= DIRPAGE.'cadastro' ?>">Cadastro</a>	
-		<a href="<?= DIRPAGE.'login' ?>">Login</a>	
+		<a href="<?= DIRPAGE.'blog' ?>">Blog</a>		
 	</nav>
 	
 	<br>
@@ -30,7 +28,7 @@
 		?>
 		<br>
 		<p>Tel: (48) 99999-9999</p>
-		<?= $this -> addExtraHeader($data) ?>
+		<?= $this -> addExtraHeader($viewData) ?>
 	</header>
 
 	<br>
@@ -39,7 +37,7 @@
 
 	<main>
 		<br>
-		<?= $this -> addMainContent($data) ?>
+		<?= $this -> addMainContent($viewData) ?>
 		<br>
 	</main>
 	
@@ -49,7 +47,7 @@
 
 	<footer>
 		<p>2019 - TODOS OS DIREITOS RESERVADOS</p><br>
-		<?= $this -> addExtraFooter($data) ?>
+		<?= $this -> addExtraFooter($viewData) ?>
 	</footer>
 </body>
 </html>

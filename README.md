@@ -18,15 +18,25 @@ composer update
 ## :ballot_box_with_check: To-do List
 
 Coisas que precisam ser feitas/melhoradas:
-  - Redirecionar para o controller 404 quando o método não existir :heavy_check_mark:
+  - Redirecionar para o controller de erro caso ocorra algum :heavy_check_mark:
   - Renomear arquivos para seguir as PSRs :heavy_check_mark:
   - Adicionar array de dados no renderLayout() :heavy_check_mark:
-  - Arrumar o parser para remover as / no final da URL :heavy_check_mark:
-  - Refazer os Breadcrumps :heavy_check_mark:
-  - Adicionar meta tags para um bom SEO :x:
+  - Sistema de rotas :heavy_check_mark:
   - Fazer navegação utilizando slug :x:
-  - Arrumar sistema de rotas :x:
+  - Refazer os Breadcrumps :x:
+  - Adicionar meta tags para um bom SEO :x:
 
+## Observações
+
+1. No arquivo `Dispatch.php`, é importante notar que, quando estiver criando as rotas, a rota dinâmica deve ir acima da rota fixa para funcionar.
+
+_Exemplo_:
+
+```
+$router -> group("contato");
+$router -> get("/{dinamico}", "ContatoController:dinamic");
+$router -> get("/fixo", "ContatoController:fixed");
+```
 
 ## :mailbox_with_mail: Licença
 

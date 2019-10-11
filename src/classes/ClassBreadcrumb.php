@@ -9,7 +9,7 @@
 
 			$path = $this -> parseUrl(); 
 			$currentHref = DIRPAGE; 
-
+			
 			$breadcrumbs = ["<a href='".$currentHref."'>".$home."</a>"];
 
 			$pathkeys = array_keys($path); 

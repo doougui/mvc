@@ -1,46 +1,41 @@
 <?php 
 	namespace App;
 	
+	use \CoffeeCode\Router\Router;
+
 	class Dispatch {
-		use \Src\Traits\TraitUrlParser;
-
 		public function run() {
+			$router = new Router(DIRPAGE);
 
-			$url = $this -> parseUrl();
-			$params = [];
+			// Home controllers
+			$router -> namespace("App\Controllers\Main");
 
-			if (!empty($url)) {
-				$currentController = $url[0].'Controller';
-				array_shift($url);
+			// Home routes
+			$router -> group(null);
+			$router -> get("/", "MainController:index");
+			$router -> get("/home", "MainController:index");
 
-				if (isset($url[0]) && !empty($url[0])) {
-					$currentAction = $url[0];
-					array_shift($url);
-				} else {
-					$currentAction = 'index';
-				}
+			// Blog controllers
+			$router -> namespace("App\Controllers\Blog");
 
-				if (count($url) > 0) {
-					$params[] = $url;
-				}
-			} else {
-				$currentController = 'HomeController';
-				$currentAction = 'index';
+			// Blog routesb
+			$router -> group("blog");
+			$router -> get("/", "BlogController:index");
+			$router -> get("/post/{post_id}/{post_slug}", "PostController:index");
+
+			// Error controllers
+			$router -> namespace("App\Controllers\Error");
+
+			// Error routes
+			$router -> group("ooops");
+			$router -> get("/{errcode}", "ErrorController:index");
+
+			// Dispatch
+			$router -> dispatch();
+
+			// Get error
+			if ($router -> error()) {
+				$router -> redirect("/ooops/{$router -> error()}");
 			}
-
-			$currentController = ucfirst($currentController);
-			$prefix = '\App\Controllers\\';
-
-			if (!file_exists(DIRREQ.'app/Controllers/'.$currentController.'.php') || 
-					!method_exists($prefix.$currentController, $currentAction)) 
-			{
-				$currentController = 'NotfoundController';
-				$currentAction = 'index';
-			}
-
-			$newController = $prefix.$currentController;
-
-			$controller = new $newController();
-			call_user_func_array([$controller, $currentAction], $params);
 		}
 	}
