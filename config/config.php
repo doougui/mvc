@@ -20,18 +20,31 @@
 	define('DIRFONT', DIRPAGE."public/fontes/");
 	define('DIRDESIGN', DIRPAGE."public/design/");
 
-	// Database connection
-	global $config;
-	$config = [];
-
+	// Database config
 	if (ENVIRONMENT == 'development') {
-		$config['dbname'] = 'estrutura_mvc';
-		$config['host'] = 'localhost';
-		$config['dbuser'] = 'root';
-		$config['dbpass'] = '';
+		define("DB_CONFIG", [
+			"driver" => "mysql",
+			"host" => "localhost",
+			"port" => "3306",
+			"dbname" => "estrutura_mvc",
+			"username" => "root",
+			"password" => "",
+			"charset" => "utf8mb4",
+			"options" => [
+				PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+			]
+		]);
 	} else {
-		$config['dbname'] = 'estrutura_mvc';
-		$config['host'] = 'localhost';
-		$config['dbuser'] = 'root';
-		$config['dbpass'] = '';
+		define("DB_CONFIG", [
+			"driver" => "mysql",
+			"host" => "localhost",
+			"port" => "3306",
+			"dbname" => "estrutura_mvc",
+			"username" => "root",
+			"password" => "",
+			"charset" => "utf8mb4",
+			"options" => [
+				PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+			]
+		]);
 	}

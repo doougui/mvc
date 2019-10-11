@@ -5,13 +5,18 @@
 		protected $db;
 
 		public function __construct() {
-			global $config;
-
 			try {
-				$this -> db = new \PDO("mysql:dbname=".$config['dbname'].";host=".$config['host'].";charset=utf8mb4", $config['dbuser'], $config['dbpass']);
-				$this -> db -> setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+				$this -> db = new \PDO(
+					DB_CONFIG['driver'].
+					":dbname=".DB_CONFIG['dbname'].
+					";host=".DB_CONFIG['host'].
+					";port=".DB_CONFIG['port'].
+					";charset=".DB_CONFIG['charset'], 
+					DB_CONFIG['username'], 
+					DB_CONFIG['password'], 
+					DB_CONFIG['options']);
 			} catch (PDOException $e) {
-				exit("Error: ".$e -> getMessage());
+				die("Error: ".$e -> getMessage());
 			}
 		}
 	}
