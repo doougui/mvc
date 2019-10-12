@@ -22,8 +22,8 @@ Coisas que precisam ser feitas/melhoradas:
   - Renomear arquivos para seguir as PSRs :heavy_check_mark:
   - Adicionar array de dados no renderLayout() :heavy_check_mark:
   - Sistema de rotas :heavy_check_mark:
-  - Fazer navegação utilizando slug :x:
-  - Refazer os Breadcrumps :x:
+  - Fazer navegação utilizando slug (package slugify) :x:
+  - Implementar algum template engine (twig, plates, etc) :x:
   - Adicionar meta tags para um bom SEO :x:
 
 ## :warning: Observações
