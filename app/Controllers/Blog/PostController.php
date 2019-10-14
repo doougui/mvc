@@ -2,17 +2,11 @@
 	namespace App\Controllers\Blog;
 
 	use App\Controllers\Render;
-	use App\Models\User;
-	use Src\Interfaces\InterfaceView;
 
-	class PostController extends Render implements InterfaceView {
+	class PostController extends Render {
 		public function index(array $urlData) {
 			$viewData = [];
-
-			$this -> setDir("Blog/Post");
-			$this -> setTitle("MVC - Post");
-			$this -> setDescription("Página da postagem do blog.");
-			$this -> setKeywords("blog, post");
+			$dir = "Blog/Post.html.twig";
 
 			$viewData["post"] = [
 				"id" => $urlData["post_id"],
@@ -21,6 +15,7 @@
 				"content" => "It's the post content"
 			];
 
-			$this -> renderLayout($viewData);
+			$this -> loadTwig();
+			echo $this -> twig -> render($dir, $viewData);
 		}
 	}

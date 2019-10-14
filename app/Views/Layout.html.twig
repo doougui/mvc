@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+	{% block head %}
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="Douglas Pinheiro Goulart">
+		<meta name="description" content="{% block description %}{% endblock %}">
+		<meta name="keywords" content="{% block keywords %}{% endblock %}">
+		<title>{% block title %}{% endblock %}</title>
+		<link rel="stylesheet" href="{{ DIRCSS }}style.css">
+	{% endblock %}
+</head>
+<body>
+	<br>
+	<nav>
+		<a href="{{ DIRPAGE }}">Home</a>
+		<a href="{{ DIRPAGE }}blog">Blog</a>
+	</nav>
+
+	<hr>
+
+	<header>
+		{% block header %}
+			<p>Tel: (48) 99999-9999</p>
+		{% endblock %}
+	</header>
+
+	<hr>
+
+	<main>
+		{% block content %}
+		{% endblock %}
+	</main>
+	
+	<hr>	
+
+	<footer>
+		{% block footer %}
+			<p>2019 - TODOS OS DIREITOS RESERVADOS</p>
+		{% endblock %}
+	</footer>
+
+	{% block js %}{% endblock %}
+</body>
+</html>

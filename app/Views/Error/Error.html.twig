@@ -1,0 +1,24 @@
+{% extends "Layout.html.twig" %}
+
+{% block title %}MVC - Erro {{ errorCode }}{% endblock %}
+{% block description %}Erro {{ errorCode }}{% endblock %}
+{% block keywords %}erro {{ errorCode }}, http code, error{% endblock %}
+
+{% block head %}
+	{{ parent() }}
+	<meta>
+{% endblock %}
+
+{% block content %}
+	<center>		
+		<h1>Erro {{ errorCode }}</h1>
+		<p>{{ errorDesc }}</p>
+	</center>
+{% endblock %}
+
+{% block footer %}
+	{{ parent() }}
+	<a href="https://pt.wikipedia.org/wiki/Lista_de_c%C3%B3digos_de_estado_HTTP" target="_blank">
+		Saíba mais sobre este erro
+	</a>
+{% endblock %}

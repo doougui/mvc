@@ -18,7 +18,7 @@
 			// Blog controllers
 			$router -> namespace("App\Controllers\Blog");
 
-			// Blog routesb
+			// Blog routes
 			$router -> group("blog");
 			$router -> get("/", "BlogController:index");
 			$router -> get("/post/{post_id}/{post_slug}", "PostController:index");

@@ -1,0 +1,13 @@
+{% extends 'Layout.html.twig' %}
+
+{% block title %}MVC - Blog{% endblock %}
+{% block description %}Página de blog{% endblock %}
+{% block keywords %}blog{% endblock %}
+
+{% block content %}
+	<ul>
+		{% for article in articles %}
+			<li>{{ article }}</li>
+		{% endfor %}
+	</ul>
+{% endblock %}

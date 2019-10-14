@@ -2,16 +2,11 @@
 	namespace App\Controllers\Error;
 
 	use App\Controllers\Render;
-	use Src\Interfaces\InterfaceView;
 
-	class ErrorController extends Render implements InterfaceView {
+	class ErrorController extends Render {
 		public function index(array $urlData) {
 			$viewData = [];
-
-			$this -> setDir("Error/Error");
-			$this -> setTitle("MVC - Erro {$urlData["errcode"]}");
-			$this -> setDescription("Erro {$urlData["errcode"]}.");
-			$this -> setKeywords("erro {$urlData["errcode"]}, http code, error");
+			$dir = "Error/Error.html.twig";
 
 			$viewData["errorCode"] = $urlData["errcode"];
 
@@ -33,6 +28,7 @@
 					break;
 			}
 
-			$this -> renderLayout($viewData);
+			$this -> loadTwig();
+			echo $this -> twig -> render($dir, $viewData);
 		}
 	}

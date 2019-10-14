@@ -17,7 +17,7 @@
 	define('DIRJS', DIRPAGE."public/js/");
 	define('DIRVID', DIRPAGE."public/video/");
 	define('DIRAUD', DIRPAGE."public/audio/");
-	define('DIRFONT', DIRPAGE."public/fontes/");
+	define('DIRFONT', DIRPAGE."public/font/");
 	define('DIRDESIGN', DIRPAGE."public/design/");
 
 	// Database config

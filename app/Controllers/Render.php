@@ -4,55 +4,22 @@
 	class Render {
 		
 		// Properties
-		private $dir;
-		private $title;
-		private $description;
-		private $keywords;
+		private $loader;
+		protected $twig;
 
-		public function getDir() { return $this -> dir; }
-		public function setDir($dir) { $this -> dir = $dir; }
-		public function getTitle() { return $this -> title; }
-		public function setTitle($title) { $this -> title = $title; }
-		public function getDescription() { return $this -> description; }
-		public function setDescription($description) { $this -> description = $description; }
-		public function getKeywords() { return $this -> keywords; } 
-		public function setKeywords($keywords) { $this -> keywords = $keywords; }
+		public function loadTwig() {
+			$this -> loader = new \Twig_Loader_Filesystem(DIRREQ."app/Views/");
+			$this -> twig = new \Twig_Environment($this -> loader, [
+				// 'cache' => DIRREQ."app/Views/cache"
+			]);
 
-		// Method responsible for rendering layout
-		public function renderLayout($viewData = []) {
-			extract($viewData);
-			include_once(DIRREQ.'app/Views/Layout.php');
-		}
-
-		// Add specific head features
-		public function addExtraHead($viewData = []) {
-			if (file_exists(DIRREQ."app/Views/{$this -> getDir()}/head.php")) {
-				extract($viewData);
-				include(DIRREQ."app/Views/{$this -> getDir()}/head.php");
-			}
-		}
-
-		// Add specific header features
-		public function addExtraHeader($viewData = []) {
-			if (file_exists(DIRREQ."app/Views/{$this -> getDir()}/header.php")) {
-				extract($viewData);
-				include(DIRREQ."app/Views/{$this -> getDir()}/header.php");
-			}
-		}
-
-		// Add main content
-		public function addMainContent($viewData = []) {
-			if (file_exists(DIRREQ."app/Views/{$this -> getDir()}/main.php")) {
-				extract($viewData);
-				include(DIRREQ."app/Views/{$this -> getDir()}/main.php");
-			}
-		}
-
-		// Add specific footer features
-		public function addExtraFooter($viewData = []) {
-			if (file_exists(DIRREQ."app/Views/{$this -> getDir()}/footer.php")) {
-				extract($viewData);
-				include(DIRREQ."app/Views/{$this -> getDir()}/footer.php");
-			}
+			$this -> twig -> addGlobal("DIRPAGE", DIRPAGE);
+			$this -> twig -> addGlobal("DIRREQ", DIRREQ);
+			$this -> twig -> addGlobal("DIRCSS", DIRPAGE."public/css/");
+			$this -> twig -> addGlobal("DIRJS", DIRPAGE."public/js/");
+			$this -> twig -> addGlobal("DIRVID", DIRPAGE."public/video/");
+			$this -> twig -> addGlobal("DIRAUD", DIRPAGE."public/audio/");
+			$this -> twig -> addGlobal("DIRFONT", DIRPAGE."public/font/");
+			$this -> twig -> addGlobal("DIRDESIGN", DIRPAGE."public/design/");
 		}
 	}

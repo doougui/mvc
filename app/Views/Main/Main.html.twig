@@ -1,0 +1,13 @@
+{% extends 'Layout.html.twig' %}
+
+{% block title %}MVC - Home{% endblock %}
+{% block description %}Página inicial{% endblock %}
+{% block keywords %}home, mvc, estrutura mvc{% endblock %}
+
+{% block content %}
+	<ul>
+		{% for user in users %}
+			<li>{{ user.name }}</li>
+		{% endfor %}
+	</ul>
+{% endblock %}
