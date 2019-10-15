@@ -7,10 +7,10 @@
 		private $loader;
 		protected $twig;
 
-		public function loadTwig() {
+		protected function loadTwig() {
 			$this -> loader = new \Twig_Loader_Filesystem(DIRREQ."app/Views/");
 			$this -> twig = new \Twig_Environment($this -> loader, [
-				// 'cache' => DIRREQ."app/Views/cache"
+				'cache' => DIRREQ."app/Views/cache"
 			]);
 
 			$this -> twig -> addGlobal("DIRPAGE", DIRPAGE);
