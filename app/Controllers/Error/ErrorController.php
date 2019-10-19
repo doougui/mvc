@@ -29,6 +29,6 @@
 			}
 
 			$this -> loadTwig();
-			echo $this -> twig -> render($dir, $viewData);
+			$this -> twig -> display($dir, $viewData);
 		}
 	}

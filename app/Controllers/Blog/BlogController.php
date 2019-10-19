@@ -11,6 +11,6 @@
 			$viewData["articles"] = ["Article 1", "Article 2", "Article 3"];
 
 			$this -> loadTwig();
-			echo $this -> twig -> render($dir, $viewData);
+			$this -> twig -> display($dir, $viewData);
 		}
 	}
