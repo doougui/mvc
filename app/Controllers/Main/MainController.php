@@ -5,9 +5,9 @@ namespace App\Controllers\Main;
 use App\Controllers\Render;
 use App\Models\User;
 
-class MainController extends Render 
+class MainController extends Render
 {
-    public function index() 
+    public function index()
     {
         $viewData = [];
         $dir = "Main/Main.html.twig";

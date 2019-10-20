@@ -4,9 +4,9 @@ namespace App\Controllers\Blog;
 
 use App\Controllers\Render;
 
-class PostController extends Render 
+class PostController extends Render
 {
-    public function index(array $urlData) 
+    public function index(array $urlData)
     {
         $viewData = [];
         $dir = "Blog/Post.html.twig";

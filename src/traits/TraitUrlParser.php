@@ -5,7 +5,7 @@ namespace Src\Traits;
 trait TraitUrlParser 
 {
     // Splits the URL into an array
-    public function parseUrl() 
+    public function parseUrl(): array 
     {
         $url = '/';
 

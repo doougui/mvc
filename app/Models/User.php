@@ -4,9 +4,9 @@ namespace App\Models;
 
 use App\Models\Connection;
 
-class User extends Connection 
+class User extends Connection
 {
-    public function getUsers() 
+    public function getUsers(): array
     {
         $sql = "SELECT * FROM user";
         $sql = $this -> db -> query($sql);

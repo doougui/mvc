@@ -7,8 +7,10 @@ class ClassBreadcrumb
     use \Src\Traits\TraitUrlParser;
 
     // Create breadbrumbs
-    public function addBreadcrumb($separator = ' &raquo; ', $home = 'Home') 
-    {
+    public function addBreadcrumb(
+        string $separator = ' &raquo; ', 
+        string $home = 'Home'
+    ): string {
         $path = $this -> parseUrl(); 
         $currentHref = DIRPAGE; 
         

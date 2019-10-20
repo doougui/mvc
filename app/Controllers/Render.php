@@ -2,13 +2,13 @@
 
 namespace App\Controllers;
 
-class Render 
+class Render
 {
     // Properties
     private $loader;
     protected $twig;
 
-    protected function loadTwig() 
+    protected function loadTwig()
     {
         $this -> loader = new \Twig_Loader_Filesystem(DIRREQ."app/Views/");
         $this -> twig = new \Twig_Environment($this -> loader, [
