@@ -1,16 +1,19 @@
-<?php 
-	namespace App\Controllers\Blog;
+<?php
 
-	use App\Controllers\Render;
+namespace App\Controllers\Blog;
 
-	class BlogController extends Render {
-		public function index() {
-			$viewData = [];
-			$dir = "Blog/Blog.html.twig";
+use App\Controllers\Render;
 
-			$viewData["articles"] = ["Article 1", "Article 2", "Article 3"];
+class BlogController extends Render 
+{
+    public function index() 
+    {
+        $viewData = [];
+        $dir = "Blog/Blog.html.twig";
 
-			$this -> loadTwig();
-			$this -> twig -> display($dir, $viewData);
-		}
-	}
+        $viewData["articles"] = ["Article 1", "Article 2", "Article 3"];
+
+        $this -> loadTwig();
+        $this -> twig -> display($dir, $viewData);
+    }
+}

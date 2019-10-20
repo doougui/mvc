@@ -1,17 +1,20 @@
-<?php 
-	namespace Src\Traits;
+<?php
 
-	trait TraitUrlParser {
-		// Splits the URL into an array
-		public function parseUrl() {
-			$url = '/';
+namespace Src\Traits;
 
-			if (isset($_GET['route'])) {
-				$url .= $_GET['route'];
-			}
-			
-			$url = array_values(array_filter(explode('/', $url)));
+trait TraitUrlParser 
+{
+    // Splits the URL into an array
+    public function parseUrl() 
+    {
+        $url = '/';
 
-			return $url;
-		}
-	}
+        if (isset($_GET['route'])) {
+            $url .= $_GET['route'];
+        }
+        
+        $url = array_values(array_filter(explode('/', $url)));
+
+        return $url;
+    }
+}

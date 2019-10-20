@@ -1,3 +1,4 @@
-<?php 
-	define("ENVIRONMENT", "development");
-	//define("ENVIRONMENT", "production");
+<?php
+
+define("ENVIRONMENT", "development");
+//define("ENVIRONMENT", "production");

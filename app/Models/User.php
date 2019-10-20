@@ -1,18 +1,21 @@
-<?php 
-	namespace App\Models;
+<?php
 
-	use App\Models\Connection;
+namespace App\Models;
 
-	class User extends Connection {
-		public function getUsers() {
-			$sql = "SELECT * FROM user";
-			$sql = $this -> db -> query($sql);
-			$sql -> execute();
+use App\Models\Connection;
 
-			if ($sql -> rowCount() > 0) {
-				return $sql -> fetchAll();
-			} else {
-				return [];
-			}
-		}
-	}
+class User extends Connection 
+{
+    public function getUsers() 
+    {
+        $sql = "SELECT * FROM user";
+        $sql = $this -> db -> query($sql);
+        $sql -> execute();
+
+        if ($sql -> rowCount() > 0) {
+            return $sql -> fetchAll();
+        } else {
+            return [];
+        }
+    }
+}

@@ -1,41 +1,44 @@
-<?php 
-	namespace App;
-	
-	use \CoffeeCode\Router\Router;
+<?php
 
-	class Dispatch {
-		public function run() {
-			$router = new Router(DIRPAGE);
+namespace App;
 
-			// Home controllers
-			$router -> namespace("App\Controllers\Main");
+use \CoffeeCode\Router\Router;
 
-			// Home routes
-			$router -> group(null);
-			$router -> get("/", "MainController:index");
-			$router -> get("/home", "MainController:index");
+class Dispatch 
+{
+    public function run() 
+    {
+        $router = new Router(DIRPAGE);
 
-			// Blog controllers
-			$router -> namespace("App\Controllers\Blog");
+        // Home controllers
+        $router -> namespace("App\Controllers\Main");
 
-			// Blog routes
-			$router -> group("blog");
-			$router -> get("/", "BlogController:index");
-			$router -> get("/post/{post_id}/{post_slug}", "PostController:index");
+        // Home routes
+        $router -> group(null);
+        $router -> get("/", "MainController:index");
+        $router -> get("/home", "MainController:index");
 
-			// Error controllers
-			$router -> namespace("App\Controllers\Error");
+        // Blog controllers
+        $router -> namespace("App\Controllers\Blog");
 
-			// Error routes
-			$router -> group("ooops");
-			$router -> get("/{errcode}", "ErrorController:index");
+        // Blog routes
+        $router -> group("blog");
+        $router -> get("/", "BlogController:index");
+        $router -> get("/post/{post_id}/{post_slug}", "PostController:index");
 
-			// Dispatch
-			$router -> dispatch();
+        // Error controllers
+        $router -> namespace("App\Controllers\Error");
 
-			// Get error
-			if ($router -> error()) {
-				$router -> redirect("/ooops/{$router -> error()}");
-			}
-		}
-	}
+        // Error routes
+        $router -> group("ooops");
+        $router -> get("/{errcode}", "ErrorController:index");
+
+        // Dispatch
+        $router -> dispatch();
+
+        // Get error
+        if ($router -> error()) {
+            $router -> redirect("/ooops/{$router -> error()}");
+        }
+    }
+}

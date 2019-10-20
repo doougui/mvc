@@ -1,19 +1,22 @@
-<?php 
-	namespace App\Controllers\Main;
+<?php
 
-	use App\Controllers\Render;
-	use App\Models\User;
+namespace App\Controllers\Main;
 
-	class MainController extends Render {
-		public function index() {
-			$viewData = [];
-			$dir = "Main/Main.html.twig";
+use App\Controllers\Render;
+use App\Models\User;
 
-			$user = new User();
+class MainController extends Render 
+{
+    public function index() 
+    {
+        $viewData = [];
+        $dir = "Main/Main.html.twig";
 
-			$viewData['users'] = $user -> getUsers();
+        $user = new User();
 
-			$this -> loadTwig();
-			$this -> twig -> display($dir, $viewData);
-		}
-	}
+        $viewData['users'] = $user -> getUsers();
+
+        $this -> loadTwig();
+        $this -> twig -> display($dir, $viewData);
+    }
+}
