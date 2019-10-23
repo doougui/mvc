@@ -4,34 +4,19 @@ namespace App;
 
 use \CoffeeCode\Router\Router;
 
-class Dispatch 
+class Dispatch
 {
-    public function run() 
+    public function run(array $groups)
     {
         $router = new Router(DIRPAGE);
 
-        // Home controllers
-        $router -> namespace("App\Controllers\Main");
+        foreach ($groups as $group) {
+            $router -> group($group['group']) -> namespace($group['namespace']);
 
-        // Home routes
-        $router -> group(null);
-        $router -> get("/", "MainController:index");
-        $router -> get("/home", "MainController:index");
-
-        // Blog controllers
-        $router -> namespace("App\Controllers\Blog");
-
-        // Blog routes
-        $router -> group("blog");
-        $router -> get("/", "BlogController:index");
-        $router -> get("/post/{post_id}/{post_slug}", "PostController:index");
-
-        // Error controllers
-        $router -> namespace("App\Controllers\Error");
-
-        // Error routes
-        $router -> group("ooops");
-        $router -> get("/{errcode}", "ErrorController:index");
+            foreach ($group['routes'] as $route) {
+                call_user_func_array([$router, $route['method']], [$route['route'], $route['handler']]);
+            }
+        }
 
         // Dispatch
         $router -> dispatch();

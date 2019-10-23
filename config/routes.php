@@ -1,6 +1,4 @@
 <?php 
-    global $groups;
-
     $groups = [
         "main" => [
             "namespace" => "App\Controllers\Main",
