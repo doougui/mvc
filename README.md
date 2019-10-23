@@ -66,7 +66,7 @@ Em `config/config.php`, altere a variável global `DB_CONFIG` de acordo com as c
 
 ### Rotas
 
-Em `config/routes.php` defina as rotas do seu projeto. As rotas são divididas em grupos, que são como uma outra aplicação dentro de sua aplicação principal.
+Em `config/routes.php` defina as rotas do seu projeto. As rotas são divididas em grupos, que são como uma outra aplicação dentro da sua aplicação principal.
 
 _**Exemplo**_:
 
@@ -96,9 +96,29 @@ Para mais informações, acesse a [documentação do Twig Template Engine](https
 
 ## :warning: Observações
 
-1. Crie a pasta "cache" dentro de `app/Views` caso não esteja criada.
+1. Em ambiente de desenvolvimento é importante que você deixa somente as duas últimas linhas do arquivo `.htaccess` descomentadas. O arquivo ficará assim:
 
-2. Em `config/routes.php`, é importante notar que, quando estiver criando as rotas, a rota dinâmica deve ir acima da rota fixa para funcionar.
+```
+RewriteEngine On
+# Options All -Indexes
+
+# ROUTER WWW Redirect.
+# RewriteCond %{HTTP_HOST} !^www\. [NC]
+# RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# ROUTER HTTPS Redirect
+# RewriteCond %{HTTP:X-Forwarded-Proto} !https
+# RewriteCond %{HTTPS} off
+# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# ROUTER URL Rewrite
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteRule ^(.*)$ ./public/index.php?route=/$1 [L,QSA]
+```
+
+2. Crie a pasta "cache" dentro de `app/Views` caso não esteja criada.
+
+3. Em `config/routes.php`, é importante notar que, quando estiver criando as rotas, a rota dinâmica deve ir acima da rota fixa para funcionar corretamente.
 
 _**Exemplo**_:
 
@@ -124,5 +144,3 @@ _**Exemplo**_:
 ## :mailbox_with_mail: Licença
 
 Sinta-se livre para usar e testar. Quanto mais pessoas contribuírem, melhor!
-
-
