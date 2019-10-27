@@ -2,6 +2,8 @@
 
 namespace App\Core;
 
+use Src\Classes\ClassBreadcrumb;
+
 class Render
 {
     // Properties
@@ -14,6 +16,10 @@ class Render
         $this -> twig = new \Twig_Environment($this -> loader, [
             // 'cache' => DIRREQ."app/Views/cache"
         ]);
+
+        $breadcrumb = new \Twig_SimpleFunction('breadcrumb', function() {
+            echo (new ClassBreadcrumb) -> addBreadcrumb();
+        });
 
         $this -> twig -> addFunction($breadcrumb);
         $this -> twig -> addGlobal("DIRPAGE", DIRPAGE);
