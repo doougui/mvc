@@ -2,7 +2,7 @@
 
 namespace App\Controllers\Main;
 
-use App\Controllers\Render;
+use App\Core\Render;
 use App\Models\User;
 
 class MainController extends Render

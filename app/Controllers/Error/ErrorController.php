@@ -2,7 +2,7 @@
 
 namespace App\Controllers\Error;
 
-use App\Controllers\Render;
+use App\Core\Render;
 
 class ErrorController extends Render
 {

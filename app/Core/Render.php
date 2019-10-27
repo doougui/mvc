@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Core;
 
 class Render
 {
@@ -15,6 +15,7 @@ class Render
             // 'cache' => DIRREQ."app/Views/cache"
         ]);
 
+        $this -> twig -> addFunction($breadcrumb);
         $this -> twig -> addGlobal("DIRPAGE", DIRPAGE);
         $this -> twig -> addGlobal("DIRREQ", DIRREQ);
         $this -> twig -> addGlobal("DIRCSS", DIRPAGE."public/css/");

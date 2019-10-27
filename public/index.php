@@ -8,5 +8,5 @@ require_once('../config/config.php');
 require_once('../config/routes.php');
 require_once('../src/vendor/autoload.php');
 
-$dispatch = new App\Dispatch();
+$dispatch = new App\Core\Dispatch();
 $dispatch -> run($groups);

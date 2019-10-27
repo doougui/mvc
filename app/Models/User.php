@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Connection;
+use App\Core\Connection;
 
 class User extends Connection
 {

@@ -2,7 +2,7 @@
 
 namespace App\Controllers\Blog;
 
-use App\Controllers\Render;
+use App\Core\Render;
 
 class BlogController extends Render
 {
