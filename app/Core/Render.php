@@ -6,29 +6,35 @@ use Src\Classes\ClassBreadcrumb;
 
 class Render
 {
-    // Properties
+    /** @var object */
     private $loader;
+
+    /** @var object */
     protected $twig;
 
-    protected function loadTwig()
+    /**
+     * Load twig template engine
+     */
+    protected function loadTwig(): void
     {
-        $this -> loader = new \Twig_Loader_Filesystem(DIRREQ."app/Views/");
-        $this -> twig = new \Twig_Environment($this -> loader, [
-            // 'cache' => DIRREQ."app/Views/cache"
+        $this->loader = new \Twig_Loader_Filesystem(DIRREQ."app/Views/");
+        $this->twig = new \Twig_Environment($this->loader, [
+            "cache" => DIRREQ."app/Views/cache"
         ]);
 
-        $breadcrumb = new \Twig_SimpleFunction('breadcrumb', function() {
-            echo (new ClassBreadcrumb) -> addBreadcrumb();
+        $breadcrumb = new \Twig_SimpleFunction("breadcrumb", function() {
+            echo (new ClassBreadcrumb)->addBreadcrumb();
         });
 
-        $this -> twig -> addFunction($breadcrumb);
-        $this -> twig -> addGlobal("DIRPAGE", DIRPAGE);
-        $this -> twig -> addGlobal("DIRREQ", DIRREQ);
-        $this -> twig -> addGlobal("DIRCSS", DIRPAGE."public/css/");
-        $this -> twig -> addGlobal("DIRJS", DIRPAGE."public/js/");
-        $this -> twig -> addGlobal("DIRVID", DIRPAGE."public/video/");
-        $this -> twig -> addGlobal("DIRAUD", DIRPAGE."public/audio/");
-        $this -> twig -> addGlobal("DIRFONT", DIRPAGE."public/font/");
-        $this -> twig -> addGlobal("DIRDESIGN", DIRPAGE."public/design/");
+        $this->twig->addFunction($breadcrumb);
+        $this->twig->addGlobal("DIRPAGE", DIRPAGE);
+        $this->twig->addGlobal("DIRREQ", DIRREQ);
+        $this->twig->addGlobal("DIRIMG", DIRIMG);
+        $this->twig->addGlobal("DIRCSS", DIRCSS);
+        $this->twig->addGlobal("DIRJS", DIRJS);
+        $this->twig->addGlobal("DIRVID", DIRVID);
+        $this->twig->addGlobal("DIRAUD", DIRAUD);
+        $this->twig->addGlobal("DIRFONT", DIRFONT);
+        $this->twig->addGlobal("DIRDESIGN", DIRDESIGN);
     }
 }

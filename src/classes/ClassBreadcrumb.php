@@ -6,12 +6,17 @@ class ClassBreadcrumb
 {
     use \Src\Traits\TraitUrlParser;
 
-    // Create breadbrumbs
+    /**
+     *
+     * @param string $separator
+     * @param string $home
+     * @return string
+     */
     public function addBreadcrumb(
-        string $separator = ' &raquo; ', 
-        string $home = 'Home'
+        string $separator = " &raquo; ",
+        string $home = "Home"
     ): string {
-        $path = $this -> parseUrl(); 
+        $path = $this->parseUrl();
         $currentHref = DIRPAGE; 
         
         $breadcrumbs = ["<a href='{$currentHref}'>{$home}</a>"];
@@ -20,7 +25,7 @@ class ClassBreadcrumb
         $last = end($pathkeys);
 
         foreach ($path as $key => $crumb) {
-            $title = ucwords(str_replace(['.php', '_', '-'],['', ' ', ' '], $crumb));
+            $title = ucwords(str_replace([".php", "_", "-"],["", " ", " "], $crumb));
             
         if (!empty($title)) {
             $currentHref .= "{$crumb}/";

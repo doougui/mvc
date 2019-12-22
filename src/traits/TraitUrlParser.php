@@ -2,18 +2,25 @@
 
 namespace Src\Traits;
 
+/**
+ * Trait TraitUrlParser
+ *
+ * @author Author Name
+ */
 trait TraitUrlParser 
 {
-    // Splits the URL into an array
+    /**
+     * @return array
+     */
     public function parseUrl(): array 
     {
-        $url = '/';
+        $url = "/";
 
-        if (isset($_GET['route'])) {
-            $url .= $_GET['route'];
+        if (isset($_GET["route"])) {
+            $url .= $_GET["route"];
         }
         
-        $url = array_values(array_filter(explode('/', $url)));
+        $url = array_values(array_filter(explode("/", $url)));
 
         return $url;
     }

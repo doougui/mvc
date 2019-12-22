@@ -6,14 +6,19 @@ use App\Core\Render;
 
 class ErrorController extends Render
 {
-    public function index(array $urlData)
+    public function __construct($router)
     {
+        $this->router = $router;
+    }
+
+    public function index(array $urlData): void
+    {
+        $viewFile = "Error/Error.html.twig";
         $viewData = [];
-        $dir = "Error/Error.html.twig";
 
         $viewData["errorCode"] = $urlData["errcode"];
 
-        switch ($urlData['errcode']) {
+        switch ($urlData["errcode"]) {
             case 400:
                 $viewData["errorDesc"] = "Requisição inválida";
                 break;
@@ -31,7 +36,7 @@ class ErrorController extends Render
                 break;
         }
 
-        $this -> loadTwig();
-        $this -> twig -> display($dir, $viewData);
+        $this->loadTwig();
+        $this->twig->display($viewFile, $viewData);
     }
 }

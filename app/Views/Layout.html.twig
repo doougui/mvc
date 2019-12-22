@@ -4,7 +4,7 @@
     {% block head %}
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="author" content="Douglas Pinheiro Goulart">
+        <meta name="author" content="{% block author %}{% endblock %}">
         <meta name="description" content="{% block description %}{% endblock %}">
         <meta name="keywords" content="{% block keywords %}{% endblock %}">
         <title>{% block title %}{% endblock %}</title>
@@ -15,7 +15,6 @@
     <br>
     <nav>
         <a href="{{ DIRPAGE }}">Home</a>
-        <a href="{{ DIRPAGE }}blog">Blog</a>
     </nav>
 
     <hr>
@@ -43,10 +42,11 @@
 
     <footer>
         {% block footer %}
-            <p>2019 - TODOS OS DIREITOS RESERVADOS</p>
+            <p>2019 - Copyright</p>
         {% endblock %}
     </footer>
 
-    {% block js %}{% endblock %}
+    {% block js %}
+    {% endblock %}
 </body>
 </html>

@@ -9,11 +9,18 @@
 
 ## :rocket: Instalação
 
-:bulb: Para instalar os pacotes, você precisará ter o [Composer](https://getcomposer.org/) instalado em sua máquina. Após ter instalado, entre na pasta `src` usando o Terminal/CMD e digite o seguinte comando:
+:bulb: Para instalar os pacotes, você precisará ter o [Composer](https://getcomposer.org/) e algum gerenciador de pacotes JavaScript como [NPM](https://www.npmjs.com/) ou [Yarn](https://yarnpkg.com/lang/en/) instalados em sua máquina.
+
+Para instalar os pacotes do Composer, entre na pasta `src` utilizando o Terminal/CMD e digite o seguinte comando:
 
 ```
 composer update
 ```
+
+Para instalar os pacotes, vá para a raiz do projeto utilizando o Terminal/CMD e digite o seguinte comando:
+
+NPM: `npm install`
+Yarn: `yarn`
 
 ## :ballot_box_with_check: To-do List
 
@@ -29,7 +36,7 @@ Coisas que precisam ser feitas/melhoradas:
 
 ## :warning: Observações
 
-1. Em ambiente de desenvolvimento é importante que você deixa somente as duas últimas linhas do arquivo `.htaccess` descomentadas. O arquivo ficará assim:
+Em ambiente de desenvolvimento é importante que você deixa somente as duas últimas linhas do arquivo `.htaccess` descomentadas. O arquivo ficará assim:
 
 ```
 RewriteEngine On
@@ -49,32 +56,28 @@ RewriteCond %{SCRIPT_FILENAME} !-f
 RewriteRule ^(.*)$ ./public/index.php?route=/$1 [L,QSA]
 ```
 
-2. Crie a pasta "cache" dentro de `app/Views` caso não esteja criada.
-
-3. Em `config/routes.php`, é importante notar que, quando estiver criando as rotas, a rota dinâmica deve ir acima da rota fixa para funcionar corretamente.
-
-_**Exemplo**_:
-
-```
-"contato" => [
-    "namespace" => "App\Controllers\Contact",
-    "group" => "contato",
-    "routes" => [
-        [
-            "method" => "get",
-            "route" => "/{dinamica}",
-            "handler" => "ContactController:dinamic"
-        ],
-        [
-            "method" => "get",
-            "route" => "/fixa",
-            "handler" => "ContactController:fixed"
-        ]
-    ]
-]
-```
-
 ## :wrench: Uso
+
+### JavaScript
+
+#### Webpack
+
+Todos os seus arquivos `.js` devem ficar na pasta `public/js/src`.
+
+Este projeto utiliza do [webpack](https://webpack.js.org/) para gerenciamento de módulos e também utiliza do `babel` para criar bundlers e garantir que o código JavaScript rode em qualquer navegador moderno.
+
+O arquivo de configuração do webpack se localiza na raiz do projeto (`webpack.config.js`). Para cada novo arquivo `.js` criado, você deve adicioná-lo como uma chave do objeto `entry` no arquivo de configuração do `webpack`.
+
+Para que seus arquivos `.js` sejam interpretados corretamente, você deve criar um servidor local com o `webpack-dev-server`. Para isso, abra o Terminal/CMD na raiz do projeto e digite `npm run start`.
+**OBS:** Caso esse servidor local criado pelo `webpack-dev-server` usar uma porta diferente da padrão (8080), você deve alterar o valor da variável global `DIRJS` no arquivo `config/config.php`. 
+
+Os arquivos finais ficarão na pasta `public/js/dist`. Estes são os arquivos que você deve importar em tags `<script></script>` e afins.
+
+#### Prettier e ESLint
+
+Para garantir a padronização e qualidade de código, este projeto utiliza do [ESLint](https://eslint.org/) e do [Prettier](https://prettier.io/) para automatizar este processo. Para o melhor aproveitamento dessas ferramentas é recomendável que você instale os pacotes do ESLint e Prettier no seu editor/IDE.
+
+O padrão de código do ESLint utilizado é o `Stantard`, mas você pode trocar alterando o arquivo `.eslintrc` na raiz do projeto. Caso prefira, você pode excluir este arquivo e executar o comando `npx eslint --init` caso esteja usando o NPM, ou `yarn run eslint --init` caso esteja usando o Yarn. Isso irá re-criar o arquivo com as configurações de sua preferência.
 
 ### Configuração de acesso
 
@@ -119,6 +122,29 @@ _**Exemplo**_:
 
 ```
 https://www.site.com.br/blog/
+```
+
+**OBS:** Em `config/routes.php`, é importante notar que, quando estiver criando as rotas, a rota dinâmica deve ir acima da rota fixa para funcionar corretamente.
+
+_**Exemplo**_:
+
+```
+"contato" => [
+    "namespace" => "App\Controllers\Contact",
+    "group" => "contato",
+    "routes" => [
+        [
+            "method" => "get",
+            "route" => "/{dinamica}",
+            "handler" => "ContactController:dinamic"
+        ],
+        [
+            "method" => "get",
+            "route" => "/fixa",
+            "handler" => "ContactController:fixed"
+        ]
+    ]
+]
 ```
 
 Para realizar o controle de rotas foi utilizado o package `coffeecode/router`. Para mais informações sobre a utilização do mesmo, acesse [este link](https://packagist.org/packages/coffeecode/router).
