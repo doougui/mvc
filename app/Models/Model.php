@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Core;
+namespace App\Models;
 
-class Connection
+class Model
 {
     /** @var object */
     protected $db;

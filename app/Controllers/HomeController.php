@@ -2,15 +2,12 @@
 
 namespace App\Controllers;
 
-use App\Core\Render;
-use App\Models\Access;
-
 /**
  * Class HomeController
  *
  * @author Author Name
  */
-class HomeController extends Render
+class HomeController extends Controller
 {
     /**
      * HomeController constructor.
@@ -19,6 +16,7 @@ class HomeController extends Render
      */
     public function __construct($router)
     {
+        parent::__construct();
         $this->router = $router;
     }
 
@@ -30,7 +28,6 @@ class HomeController extends Render
         $viewFile = "Home.html.twig";
         $viewData = [];
 
-        $this->loadTwig();
         $this->twig->display($viewFile, $viewData);
     }
 }

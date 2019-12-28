@@ -2,14 +2,12 @@
 
 namespace App\Models;
 
-use App\Core\Connection;
-
 /**
  * Class Example
  *
  * @author Author Name
  */
-class Example extends Connection
+class Example extends Model
 {
     /**
      * This is a example model

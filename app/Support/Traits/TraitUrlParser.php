@@ -1,6 +1,6 @@
 <?php
 
-namespace Src\Traits;
+namespace App\Support\Traits;
 
 /**
  * Trait TraitUrlParser

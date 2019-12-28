@@ -1,10 +1,12 @@
 <?php
 
-namespace Src\Classes;
+namespace App\Support\Classes;
 
-class ClassBreadcrumb 
+use App\Support\Traits\TraitUrlParser;
+
+class ClassBreadcrumb
 {
-    use \Src\Traits\TraitUrlParser;
+    use TraitUrlParser;
 
     /**
      *
@@ -17,7 +19,7 @@ class ClassBreadcrumb
         string $home = "Home"
     ): string {
         $path = $this->parseUrl();
-        $currentHref = DIRPAGE; 
+        $currentHref = SITE["base"]."/";
         
         $breadcrumbs = ["<a href='{$currentHref}'>{$home}</a>"];
 

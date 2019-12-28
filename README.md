@@ -158,13 +158,13 @@ Para realizar o controle de rotas foi utilizado o package `coffeecode/router`. P
 Para as views, utilizaremos o [Template Engine Twig](https://twig.symfony.com/). No arquivo `app/Controllers/Render.php` você pode configurar a localização de suas views alterando a seguinte linha:
 
 ```
-$this->loader = new \Twig_Loader_Filesystem(DIRREQ."app/Views/");
+$this->loader = new \Twig_Loader_Filesystem(SITE["root"]."/app/Views/");
 ```
 
 Por padrão, o cache está ativo para agilizar a renderização das páginas. Se o Twig identifica mudanças nas views ele monta o cache novamente. Para ambiente de desenvolvimento, é recomendado que você desative o cache. Para isso, basta comentar a seguinte linha:
 
 ```
-'cache' => DIRREQ."app/Views/cache"
+"cache" => SITE["root"]."/app/Views/cache"
 ```
 
 Para ativar o cache novamente, descomente a linha.

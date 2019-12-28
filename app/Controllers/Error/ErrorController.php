@@ -2,9 +2,9 @@
 
 namespace App\Controllers\Error;
 
-use App\Core\Render;
+use App\Controllers\Controller;
 
-class ErrorController extends Render
+class ErrorController extends Controller
 {
     public function __construct($router)
     {
@@ -36,7 +36,6 @@ class ErrorController extends Render
                 break;
         }
 
-        $this->loadTwig();
         $this->twig->display($viewFile, $viewData);
     }
 }

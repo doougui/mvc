@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Core;
+namespace App;
 
 use \CoffeeCode\Router\Router;
 
@@ -11,9 +11,9 @@ class Dispatch
      *
      * @param array $groups
      */
-    public function run(array $groups): void
+    public function bootstrap(array $groups): void
     {
-        $router = new Router(DIRPAGE);
+        $router = new Router(SITE["base"]);
 
         foreach ($groups as $group) {
             $router->group($group["group"])->namespace($group["namespace"]);
