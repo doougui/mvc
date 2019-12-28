@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use Dotenv\Dotenv;
+
 session_start();
 
 date_default_timezone_set("America/Sao_Paulo");
@@ -12,9 +14,9 @@ mb_http_output("UTF-8");
 
 require_once("../config/config.php");
 require_once("../config/routes.php");
-require_once("../src/vendor/autoload.php");
+require_once("../vendor/autoload.php");
 
-$dotenv = \Dotenv\Dotenv::createImmutable(DIRREQ);
+$dotenv = Dotenv::createImmutable(DIRREQ);
 $dotenv->load();
 
 $dispatch = new App\Core\Dispatch();

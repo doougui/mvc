@@ -1,0 +1,27 @@
+{
+  "name": "doougui/mvc",
+  "description": "MVC folder structure based on PHP",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+      {
+        "name": "Douglas Pinheiro Goulart",
+        "email": "douglaspigoulart@gmail.com",
+        "role": "Back-End Developer",
+        "homepage": "https://github.com/doougui"
+      }
+  ],
+  "autoload": {
+    "psr-4": {
+      "App\\": "app",
+      "Src\\": "src"
+    }
+  },
+  "require": {
+    "ext-json": "*",
+    "ext-pdo": "*",
+    "coffeecode/router": "^1.0",
+    "twig/twig": "^2.12",
+    "vlucas/phpdotenv": "^4.1"
+  }
+}
