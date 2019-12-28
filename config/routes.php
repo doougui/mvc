@@ -1,5 +1,5 @@
 <?php 
-    $groups = [
+    $routes = [
         [
             "namespace" => "App\Controllers",
             "group" => null,

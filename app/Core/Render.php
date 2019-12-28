@@ -17,9 +17,9 @@ class Render
      */
     protected function loadTwig(): void
     {
-        $this->loader = new \Twig_Loader_Filesystem(DIRREQ."app/Views/");
+        $this->loader = new \Twig_Loader_Filesystem(DIRREQ."app/views/");
         $this->twig = new \Twig_Environment($this->loader, [
-            "cache" => DIRREQ."app/Views/cache"
+            "cache" => DIRREQ."resources/views/cache"
         ]);
 
         $breadcrumb = new \Twig_SimpleFunction("breadcrumb", function() {

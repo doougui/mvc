@@ -20,4 +20,4 @@ $dotenv = Dotenv::createImmutable(DIRREQ);
 $dotenv->load();
 
 $dispatch = new App\Core\Dispatch();
-$dispatch->run($groups);
+$dispatch->run($routes);

@@ -13,12 +13,12 @@ if (substr($_SERVER["DOCUMENT_ROOT"], -1) == "/") {
 }
 
 // Global folders
-define("DIRIMG", DIRPAGE."public/img/");
-define("DIRCSS", DIRPAGE."public/css/");
-define("DIRVID", DIRPAGE."public/video/");
-define("DIRAUD", DIRPAGE."public/audio/");
-define("DIRFONT", DIRPAGE."public/font/");
-define("DIRDESIGN", DIRPAGE."public/design/");
+define("DIRIMG", DIRPAGE."resources/img/");
+define("DIRCSS", DIRPAGE."resources/css/");
+define("DIRVID", DIRPAGE."resources/video/");
+define("DIRAUD", DIRPAGE."resources/audio/");
+define("DIRFONT", DIRPAGE."resources/font/");
+define("DIRDESIGN", DIRPAGE."resources/design/");
 
 // Database config
 if (ENVIRONMENT == "development") {
@@ -39,7 +39,7 @@ if (ENVIRONMENT == "development") {
         ]
     ]);
 } else {
-    define("DIRJS", DIRPAGE."public/js/dist/");
+    define("DIRJS", DIRPAGE."resources/js/dist/");
 
     define("DB_CONFIG", [
         "driver" => "mysql",
