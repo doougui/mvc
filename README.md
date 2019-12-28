@@ -36,11 +36,11 @@ Coisas que precisam ser feitas/melhoradas:
 
 ## :warning: Observações
 
-Em ambiente de desenvolvimento é importante que você deixa somente as duas últimas linhas do arquivo `.htaccess` descomentadas. O arquivo ficará assim:
+Em ambiente de desenvolvimento, é importante que você deixa o arquivo `public/.htaccess` com as seguintes lihas comentadas para evitar erros de redirecionamento:
 
 ```
 RewriteEngine On
-# Options All -Indexes
+Options All -Indexes
 
 # ROUTER WWW Redirect.
 # RewriteCond %{HTTP_HOST} !^www\. [NC]
@@ -52,9 +52,13 @@ RewriteEngine On
 # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # ROUTER URL Rewrite
-RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteBase /mvc
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ ./public/index.php?route=/$1 [L,QSA]
 ```
+
+Substitua *mvc* (`RewriteBase /mvc`) pelo nome do seu projeto.
 
 ## :wrench: Uso
 

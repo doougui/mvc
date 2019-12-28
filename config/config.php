@@ -3,7 +3,7 @@
 require("environment.php");
 
 // Files, folders, etc
-$innerFolder = "estrutura_mvc/";
+$innerFolder = "mvc/";
 define("DIRPAGE", "http://{$_SERVER["HTTP_HOST"]}/{$innerFolder}");
 
 if (substr($_SERVER["DOCUMENT_ROOT"], -1) == "/") {
