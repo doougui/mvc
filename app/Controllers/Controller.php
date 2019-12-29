@@ -3,6 +3,10 @@
 namespace App\Controllers;
 
 use App\Support\Classes\ClassBreadcrumb;
+use Twig\TwigFunction;
+use Twig\Environment;
+use Twig\Extension\DebugExtension;
+use Twig\Loader\FilesystemLoader;
 
 /**
  * Class Controller
@@ -29,24 +33,34 @@ class Controller
     {
         $this->router = $router;
 
-        $this->loader = new \Twig_Loader_Filesystem(SITE["root"]."/views");
-        $this->twig = new \Twig_Environment($this->loader, [
-//            "cache" => SITE["root"]."/views/cache"
+        /**
+         * Set debug to false and uncomment cache line on production
+         */
+        $this->loader = new FilesystemLoader(SITE["root"]."/views");
+        $this->twig = new Environment($this->loader, [
+//            "cache" => SITE["root"]."/views/cache",
+            "debug" => true
         ]);
 
+        /**
+         * This is a debug only function, remove it on production
+         */
+        $this->twig->addExtension(new DebugExtension());
+
         $functions = [
-            "breadcrumb" => new \Twig_SimpleFunction("breadcrumb", function () {
+            "breadcrumb" => new TwigFunction("breadcrumb", function () {
                 return (new ClassBreadcrumb)->addBreadcrumb();
             }),
-            "site" => new \Twig_SimpleFunction("site", function ($param) {
+            "site" => new TwigFunction("site", function (string $param = null)
+            {
                 return site($param);
             }),
-            "asset" => new \Twig_SimpleFunction("asset", function (
+            "asset" => new TwigFunction("asset", function (
                 string $path
             ) {
                 return asset($path);
             }),
-            "flash" => new \Twig_SimpleFunction("flash", function (
+            "flash" => new TwigFunction("flash", function (
                 string $type = null,
                 string $message = null
             ) {
