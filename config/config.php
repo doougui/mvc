@@ -4,13 +4,13 @@
  * SITE CONFIG
  */
 define("SITE", [
-    "name" => getenv("name") ?: "mvc",
-    "desc" => getenv("description") ?: "MVC folder structure based on PHP",
-    "domain" => getenv("domain") ?: "localhost",
-    "locale" => getenv("locale") ?: "en_US",
-    "root" => getenv("root") ?: "C:/wamp/www/mvc",
-    "base" => getenv("base") ?:
-        "http://localhost".getenv("webpack" ? ":8080" : "")."/mvc"
+    "name" => getenv("NAME") ?: "mvc",
+    "desc" => getenv("DESCRIPTION") ?: "MVC folder structure based on PHP",
+    "domain" => getenv("DOMAIN") ?: "localhost",
+    "locale" => getenv("LOCALE") ?: "en_US",
+    "root" => getenv("ROOT") ?: "C:/wamp/www/mvc",
+    "base" => getenv("BASE") ?:
+        "http://localhost".getenv("WEBPACK" ? ":8080" : "")."/mvc"
 ]);
 
 /**

@@ -8,14 +8,13 @@ class Dispatch
 {
     /**
      * Application bootstrapper
-     *
-     * @param array $groups
+     * @param array $routes
      */
-    public function bootstrap(array $groups): void
+    public function bootstrap(array $routes): void
     {
         $router = new Router(SITE["base"]);
 
-        foreach ($groups as $group) {
+        foreach ($routes as $group) {
             $router->group($group["group"])->namespace($group["namespace"]);
 
             foreach ($group["routes"] as $route) {
