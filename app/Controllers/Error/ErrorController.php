@@ -4,13 +4,27 @@ namespace App\Controllers\Error;
 
 use App\Controllers\Controller;
 
+/**
+ * Class ErrorController
+ * @package App\Controllers\Error
+ */
 class ErrorController extends Controller
 {
+    /**
+     * Every controller must inherit its parent constructor
+     * @param $router
+     */
     public function __construct($router)
     {
-        $this->router = $router;
+        parent::__construct($router);
     }
 
+    /**
+     * @param array $urlData
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
     public function index(array $urlData): void
     {
         $viewFile = "Error/Error.html.twig";

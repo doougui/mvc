@@ -4,6 +4,10 @@ namespace App\Controllers;
 
 use App\Support\Classes\ClassBreadcrumb;
 
+/**
+ * Class Controller
+ * @package App\Controllers
+ */
 class Controller
 {
     /** @var object */
@@ -13,10 +17,18 @@ class Controller
     protected $twig;
 
     /**
-     * Load twig template engine
+     * @var
      */
-    protected function __construct()
+    protected $router;
+
+    /**
+     * Controller constructor.
+     * @param $router
+     */
+    protected function __construct($router)
     {
+        $this->router = $router;
+
         $this->loader = new \Twig_Loader_Filesystem(SITE["root"]."/views");
         $this->twig = new \Twig_Environment($this->loader, [
 //            "cache" => SITE["root"]."/views/cache"

@@ -10,18 +10,18 @@ namespace App\Controllers;
 class HomeController extends Controller
 {
     /**
-     * HomeController constructor.
-     * 
+     * Every controller must inherit its parent constructor
      * @param $router
      */
     public function __construct($router)
     {
-        parent::__construct();
-        $this->router = $router;
+        parent::__construct($router);
     }
 
     /**
-     * Display home page view
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
      */
     public function index(): void
     {
