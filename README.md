@@ -30,7 +30,7 @@ Coisas que precisam ser feitas/melhoradas:
   - Adicionar array de dados no renderLayout() :heavy_check_mark:
   - Sistema de rotas :heavy_check_mark:
   - Implementar algum template engine (twig, plates, etc) :heavy_check_mark:
-  - Ajustar projeto de acordo com as PSRs e Design Patterns :x:
+  - Ajustar projeto de acordo com as PSRs e Design Patterns :heavy_check_mark:
   - Fazer navegação utilizando slug (package slugify) :x:
   - Adicionar meta tags para um bom SEO :x:
 
@@ -72,8 +72,8 @@ Este projeto utiliza do [webpack](https://webpack.js.org/) para gerenciamento de
 
 O arquivo de configuração do webpack se localiza na raiz do projeto (`webpack.config.js`). Para cada novo arquivo `.js` criado, você deve adicioná-lo como uma chave do objeto `entry` no arquivo de configuração do `webpack`.
 
-Para que seus arquivos `.js` sejam interpretados corretamente, você deve criar um servidor local com o `webpack-dev-server`. Para isso, abra o Terminal/CMD na raiz do projeto e digite `npm run start`.
-**OBS:** Caso esse servidor local criado pelo `webpack-dev-server` usar uma porta diferente da padrão (8080), você deve alterar o valor da variável global `DIRJS` no arquivo `config/config.php`. 
+Para que seus arquivos `.js` sejam interpretados corretamente, você deve definir o valor `WEBPACK` no arquivo `.env` (crie o arquivo caso ainda não tenha criado) como `true`. Logo após isso, você deve criar um servidor local com o `webpack-dev-server`. Para isso, abra o Terminal/CMD na raiz do projeto e digite `npm run start`.
+**OBS:** Caso esse servidor local criado pelo `webpack-dev-server` usar uma porta diferente da padrão (8080), você deve alterar o valor da variável global `SITE` no índice `['base']` no arquivo `config/config.php` (ou adicionar o valor manualmente no arquivo `.env`)
 
 Os arquivos finais ficarão na pasta `public/js/dist`. Estes são os arquivos que você deve importar em tags `<script></script>` e afins.
 
@@ -85,38 +85,9 @@ O padrão de código do ESLint utilizado é o `Stantard`, mas você pode trocar 
 
 ### Configuração de acesso
 
-Em `config/config.php`, coloque a pasta onde seu projeto está localizado na variável `$innerFolder`. Caso o projeto esteja localizado na raiz (geralmente quando a aplicação está em produção), deixe a variável em branco (`$innerFolder = "";`).
+No arquivo `.env` você deve colocar todas as informações de acesso. Caso prefira, você também pode alterar os valores padrão no arquivo `config/config.php` e no arquivo `.env`, deixar os valores de produção.
 
-
-_**Exemplo**_:
-
-```
-$innerFolder = "estrutura_mvc/";
-```
-
-URL DE ACESSO:
-
-```
-http://localhost/estrutura_mvc/
-```
-
-_**Exemplo 2**_:
-
-```
-$innerFolder = "";
-```
-
-URL DE ACESSO:
-
-```
-http://localhost/
-```
-
-### Configuração de banco de dados
-
-Em `config/environment.php`, defina o seu ambiente de desenvolvimento entre `development` (desenvolvimento) ou `production` (produção) comentando a linha que não define seu ambiente e descomentando a que define.
-
-Em `config/config.php`, altere a variável global `DB_CONFIG` de acordo com as configurações de banco de dados de sua aplicação.
+Você pode encontrar um exemplo de quais informações devem ser inseridas no arquivo `.env` em `.env.example`, localizado na raiz do projeto.
 
 ### Rotas
 
@@ -133,7 +104,7 @@ https://www.site.com.br/blog/
 _**Exemplo**_:
 
 ```
-"contato" => [
+[
     "namespace" => "App\Controllers\Contact",
     "group" => "contato",
     "routes" => [
@@ -155,19 +126,23 @@ Para realizar o controle de rotas foi utilizado o package `coffeecode/router`. P
 
 ### Views
 
-Para as views, utilizaremos o [Template Engine Twig](https://twig.symfony.com/). No arquivo `app/Controllers/Render.php` você pode configurar a localização de suas views alterando a seguinte linha:
+Para as views, utilizaremos o [Template Engine Twig](https://twig.symfony.com/). No arquivo `app/Controllers/Controller.php` você pode configurar a localização de suas views alterando a seguinte linha:
 
 ```
-$this->loader = new \Twig_Loader_Filesystem(SITE["root"]."/app/Views/");
+$this->loader = new FilesystemLoader(SITE["root"]."/views");
 ```
 
-Por padrão, o cache está ativo para agilizar a renderização das páginas. Se o Twig identifica mudanças nas views ele monta o cache novamente. Para ambiente de desenvolvimento, é recomendado que você desative o cache. Para isso, basta comentar a seguinte linha:
+O Twig usa um sistema de cache, portanto, se o Twig identifica mudanças nas views ele monta o cache novamente. Para ambiente de desenvolvimento, é recomendado que você desative o cache. Para isso, basta comentar a seguinte linha (caso ainda não esteja comentada):
 
 ```
-"cache" => SITE["root"]."/app/Views/cache"
+"cache" => SITE["root"]."/views/cache",
 ```
 
-Para ativar o cache novamente, descomente a linha.
+Em produção, lembre-se de setar a opção `debug` como `false` e comentar a seguinte linha:
+
+```
+$this->twig->addExtension(new DebugExtension());
+```
 
 Para mais informações, acesse a [documentação do Twig Template Engine](https://twig.symfony.com/doc/2.x/).
 

@@ -1,4 +1,4 @@
-{% extends "Layout.html.twig" %}
+{% extends "layouts/Layout.html.twig" %}
 
 {% block title %}MVC - Erro {{ errorCode }}{% endblock %}
 {% block description %}Erro {{ errorCode }}{% endblock %}
@@ -9,10 +9,10 @@
 {% endblock %}
 
 {% block content %}
-    <center>		
+    <div style="text-align: center;">
         <h1>Erro {{ errorCode }}</h1>
         <p>{{ errorDesc }}</p>
-    </center>
+    </div>
 {% endblock %}
 
 {% block footer %}
