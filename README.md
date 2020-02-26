@@ -11,7 +11,7 @@
 
 :bulb: Para instalar os pacotes, você precisará ter o [Composer](https://getcomposer.org/) e algum gerenciador de pacotes JavaScript como [NPM](https://www.npmjs.com/) ou [Yarn](https://yarnpkg.com/lang/en/) instalados em sua máquina.
 
-Para instalar os pacotes do Composer, entre na pasta `src` utilizando o Terminal/CMD e digite o seguinte comando:
+Para instalar os pacotes do Composer, acesse a raiz do projeto utilizando o Terminal/CMD e digite o seguinte comando:
 
 ```
 composer update
@@ -19,8 +19,15 @@ composer update
 
 Para instalar os pacotes, vá para a raiz do projeto utilizando o Terminal/CMD e digite o seguinte comando:
 
-NPM: `npm install`
-Yarn: `yarn`
+NPM: 
+```
+npm install
+```
+
+Yarn: 
+```
+yarn
+```
 
 ## :ballot_box_with_check: To-do List
 
