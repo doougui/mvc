@@ -38,10 +38,9 @@ class Controller
          */
         $this->loader = new FilesystemLoader(dirname(__DIR__, 2)."/views");
         $this->twig = new Environment($this->loader, [
-            "cache" => dirname(__DIR__, 2)."/views/cache",
-             "debug" => true
+//            "cache" => dirname(__DIR__, 2)."/views/cache",
+            "debug" => true
         ]);
-
 
         /**
          * This is a debug only function, remove it on production
