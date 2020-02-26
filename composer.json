@@ -16,7 +16,6 @@
       "App\\": "app"
     },
     "files": [
-      "config/config.php",
       "app/Support/Helpers.php"
     ]
   },

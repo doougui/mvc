@@ -36,11 +36,12 @@ class Controller
         /**
          * Set debug to false and uncomment cache line on production
          */
-        $this->loader = new FilesystemLoader(SITE["root"]."/views");
+        $this->loader = new FilesystemLoader(dirname(__DIR__, 2)."/views");
         $this->twig = new Environment($this->loader, [
 //            "cache" => SITE["root"]."/views/cache",
-            "debug" => true
+            // "debug" => true
         ]);
+
 
         /**
          * This is a debug only function, remove it on production

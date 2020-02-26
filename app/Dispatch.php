@@ -10,20 +10,24 @@ class Dispatch
      * Application bootstrapper
      * @param array $routes
      */
-    public function bootstrap(array $routes): void
+    public function bootstrap(): void
     {
-        $router = new Router(SITE["base"]);
+        $router = new Router(site());
 
-        foreach ($routes as $group) {
-            $router->group($group["group"])->namespace($group["namespace"]);
-
-            foreach ($group["routes"] as $route) {
-                call_user_func_array(
-                    [$router, $route["method"]], 
-                    [$route["route"], $route["handler"], $route["name"]]
-                );
-            }
-        }
+        /**
+         * HOME
+         */
+        $router->namespace("App\Controllers");
+        $router->group(null);
+        $router->get("/", "HomeController:index", "home.index");
+        $router->get("/home", "HomeController:index", "home.home");
+        
+        /**
+         * ERROR
+         */
+        $router->namespace("App\Controllers\Error");
+        $router->group("ooops");
+        $router->get("/{errcode}", "ErrorController:index", "error");
 
         $router->dispatch();
 

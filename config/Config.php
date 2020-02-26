@@ -8,8 +8,7 @@ define("SITE", [
     "desc" => getenv("DESCRIPTION") ?: "MVC folder structure based on PHP",
     "domain" => getenv("DOMAIN") ?: "localhost",
     "locale" => getenv("LOCALE") ?: "en_US",
-    "root" => getenv("ROOT") ?: "C:/wamp/www/mvc",
-    "base" => getenv("BASE") ?:
+    "root" => getenv("ROOT") ?:
         "http://localhost".getenv("WEBPACK" ? ":8080" : "")."/mvc"
 ]);
 

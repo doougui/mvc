@@ -19,7 +19,7 @@ class ClassBreadcrumb
         string $home = "Home"
     ): string {
         $path = $this->parseUrl();
-        $currentHref = SITE["base"]."/";
+        $currentHref = site()."/";
         
         $breadcrumbs = ["<a href='{$currentHref}'>{$home}</a>"];
 

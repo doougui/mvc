@@ -10,7 +10,7 @@ function site(string $param = null): string
         return SITE[$param];
     }
 
-    return SITE["base"];
+    return SITE["root"];
 }
 
 /**
@@ -19,7 +19,7 @@ function site(string $param = null): string
  */
 function asset(string $path): string
 {
-    return SITE["base"]."/{$path}";
+    return SITE["root"]."/{$path}";
 }
 
 function flash(string $type = null, string $message = null): ?string
