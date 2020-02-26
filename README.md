@@ -64,8 +64,9 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ ./public/index.php?route=/$1 [L,QSA]
 ```
-
 Substitua *mvc* (`RewriteBase /mvc`) pelo nome do seu projeto.
+
+Em ambiente de produção, você deve deletar o arquivo `.htaccess` localizado na raiz do projeto e colocar os conteúdos da pasta `public` dentro da pasta `public` do seu servidor, todo o resto deve permanecer fora desta pasta.
 
 ## :wrench: Uso
 
@@ -73,76 +74,51 @@ Substitua *mvc* (`RewriteBase /mvc`) pelo nome do seu projeto.
 
 #### Webpack
 
-Todos os seus arquivos `.js` devem ficar na pasta `public/js/src`.
+Todos os seus arquivos `.js` devem ficar na pasta `resources/js`.
 
-Este projeto utiliza do [webpack](https://webpack.js.org/) para gerenciamento de módulos e também utiliza do `babel` para criar bundlers e garantir que o código JavaScript rode em qualquer navegador moderno.
+Este projeto utiliza do [laravel-mix](https://laravel-mix.com/) para gerenciamento de módulos e garantir que o código JavaScript rode em qualquer navegador moderno, além de transformar código SASS em CSS.
 
-O arquivo de configuração do webpack se localiza na raiz do projeto (`webpack.config.js`). Para cada novo arquivo `.js` criado, você deve adicioná-lo como uma chave do objeto `entry` no arquivo de configuração do `webpack`.
+O arquivo de configuração do webpack se localiza na raiz do projeto (`webpack.mix.js`). 
 
-Para que seus arquivos `.js` sejam interpretados corretamente, você deve definir o valor `WEBPACK` no arquivo `.env` (crie o arquivo caso ainda não tenha criado) como `true`. Logo após isso, você deve criar um servidor local com o `webpack-dev-server`. Para isso, abra o Terminal/CMD na raiz do projeto e digite `npm run start`.
-**OBS:** Caso esse servidor local criado pelo `webpack-dev-server` usar uma porta diferente da padrão (8080), você deve alterar o valor da variável global `SITE` no índice `['base']` no arquivo `config/config.php` (ou adicionar o valor manualmente no arquivo `.env`)
+Utilize o comando `npm run dev|watch|hot|production` para iniciar o webpack.
 
-Os arquivos finais ficarão na pasta `public/js/dist`. Estes são os arquivos que você deve importar em tags `<script></script>` e afins.
-
-#### Prettier e ESLint
-
-Para garantir a padronização e qualidade de código, este projeto utiliza do [ESLint](https://eslint.org/) e do [Prettier](https://prettier.io/) para automatizar este processo. Para o melhor aproveitamento dessas ferramentas é recomendável que você instale os pacotes do ESLint e Prettier no seu editor/IDE.
-
-O padrão de código do ESLint utilizado é o `Stantard`, mas você pode trocar alterando o arquivo `.eslintrc` na raiz do projeto. Caso prefira, você pode excluir este arquivo e executar o comando `npx eslint --init` caso esteja usando o NPM, ou `yarn run eslint --init` caso esteja usando o Yarn. Isso irá re-criar o arquivo com as configurações de sua preferência.
+Os arquivos finais ficarão na pasta `public/js`. Estes são os arquivos que você deve importar em tags `<script></script>` e afins.
 
 ### Configuração de acesso
 
-No arquivo `.env` você deve colocar todas as informações de acesso. Caso prefira, você também pode alterar os valores padrão no arquivo `config/config.php` e no arquivo `.env`, deixar os valores de produção.
+No arquivo `.env` você deve colocar todas as informações de acesso. Caso prefira, você também pode alterar os valores padrão no arquivo `config/Config.php` e no arquivo `.env`, deixar os valores de produção.
 
 Você pode encontrar um exemplo de quais informações devem ser inseridas no arquivo `.env` em `.env.example`, localizado na raiz do projeto.
 
 ### Rotas
 
-Em `config/routes.php` defina as rotas do seu projeto. As rotas são divididas em grupos.
+Em `app/Dispatch.php` defina as rotas do seu projeto.
+
+**OBS:** Quando definindo as rotas, é importante notar que a rota dinâmica deve ir acima da rota fixa para funcionar corretamente.
 
 _**Exemplo**_:
 
 ```
-https://www.site.com.br/blog/
-```
-
-**OBS:** Em `config/routes.php`, é importante notar que, quando estiver criando as rotas, a rota dinâmica deve ir acima da rota fixa para funcionar corretamente.
-
-_**Exemplo**_:
-
-```
-[
-    "namespace" => "App\Controllers\Contact",
-    "group" => "contato",
-    "routes" => [
-        [
-            "method" => "get",
-            "route" => "/{dinamica}",
-            "handler" => "ContactController:dinamic"
-        ],
-        [
-            "method" => "get",
-            "route" => "/fixa",
-            "handler" => "ContactController:fixed"
-        ]
-    ]
-]
+$router->namespace("App\Controllers\Contact");
+$router->group("contato");
+$router->get("/{dinamica}", "ContactController:dinamic", "contact.dinamic");
+$router->get("/fixa", "ContactController:fixed", "contact.fixed");
 ```
 
 Para realizar o controle de rotas foi utilizado o package `coffeecode/router`. Para mais informações sobre a utilização do mesmo, acesse [este link](https://packagist.org/packages/coffeecode/router).
 
 ### Views
 
-Para as views, utilizaremos o [Template Engine Twig](https://twig.symfony.com/). No arquivo `app/Controllers/Controller.php` você pode configurar a localização de suas views alterando a seguinte linha:
+Para as views, utilizaremos o [Template Engine Twig](https://twig.symfony.com/). No arquivo `app/Controllers/Controller.php` você pode configurar o caminho das views alterando a seguinte linha:
 
 ```
-$this->loader = new FilesystemLoader(SITE["root"]."/views");
+$this->loader = new FilesystemLoader(dirname(__DIR__, 2)."/views");
 ```
 
 O Twig usa um sistema de cache, portanto, se o Twig identifica mudanças nas views ele monta o cache novamente. Para ambiente de desenvolvimento, é recomendado que você desative o cache. Para isso, basta comentar a seguinte linha (caso ainda não esteja comentada):
 
 ```
-"cache" => SITE["root"]."/views/cache",
+"cache" => dirname(__DIR__, 2)."/views/cache",
 ```
 
 Em produção, lembre-se de setar a opção `debug` como `false` e comentar a seguinte linha:
