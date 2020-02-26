@@ -1,43 +1,30 @@
 {
   "name": "mvc",
-  "version": "2.0.0",
-  "description": "Estrutura MVC",
+  "version": "1.0.0",
+  "description": "MVC folder structure for PHP projects",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack --mode development",
-    "build": "webpack --mode production",
-    "start": "webpack-dev-server --mode development --open"
+    "dev": "NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "hot": "NODE_ENV=development webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "production": "NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/doougui/estrutura_mvc.git"
+    "url": "https://github.com/doougui/mvc"
   },
-  "keywords": [
-    "php",
-    "mvc"
-  ],
-  "author": "Douglas Pinheiro Goulart (douglaspigoulart@gmail.com)",
+  "keywords": [],
+  "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/doougui/estrutura_mvc/issues"
+    "url": "https://github.com/doougui/mvc/issues"
   },
-  "homepage": "https://github.com/doougui/estrutura_mvc#readme",
+  "homepage": "https://github.com/doougui/mvc#readme",
   "devDependencies": {
-    "@babel/cli": "^7.7.5",
-    "@babel/core": "^7.7.5",
-    "@babel/preset-env": "^7.7.6",
-    "@babel/runtime": "^7.7.6",
-    "babel-loader": "^8.0.6",
-    "core-js": "^3.5.0",
-    "eslint": "^6.7.2",
-    "eslint-config-standard": "^14.1.0",
-    "eslint-plugin-import": "^2.19.1",
-    "eslint-plugin-node": "^10.0.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1",
-    "webpack": "^4.41.3",
-    "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.10.0"
-  },
-  "dependencies": {}
+    "laravel-mix": "^5.0.1",
+    "resolve-url-loader": "^3.1.0",
+    "sass": "^1.26.1",
+    "sass-loader": "^8.0.2",
+    "vue-template-compiler": "^2.6.11"
+  }
 }

@@ -9,7 +9,7 @@ define("SITE", [
     "domain" => getenv("DOMAIN") ?: "localhost",
     "locale" => getenv("LOCALE") ?: "en_US",
     "root" => getenv("ROOT") ?:
-        "http://localhost".getenv("WEBPACK" ? ":8080" : "")."/mvc"
+        "http://localhost/mvc"
 ]);
 
 /**
