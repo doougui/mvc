@@ -4,7 +4,7 @@ namespace App\Support\Classes;
 
 use App\Support\Traits\TraitUrlParser;
 
-class ClassBreadcrumb
+class Breadcrumb
 {
     use TraitUrlParser;
 
@@ -14,7 +14,7 @@ class ClassBreadcrumb
      * @param string $home
      * @return string
      */
-    public function addBreadcrumb(
+    public function render(
         string $separator = " &raquo; ",
         string $home = "Home"
     ): string {

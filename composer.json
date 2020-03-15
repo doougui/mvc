@@ -24,6 +24,7 @@
     "ext-pdo": "*",
     "coffeecode/router": "^1.0",
     "twig/twig": "^2.12",
-    "vlucas/phpdotenv": "^4.1"
+    "vlucas/phpdotenv": "^4.1",
+    "coffeecode/optimizer": "^2.0"
   }
 }

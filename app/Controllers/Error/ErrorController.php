@@ -3,6 +3,7 @@
 namespace App\Controllers\Error;
 
 use App\Controllers\Controller;
+use App\Support\Classes\Seo;
 
 /**
  * Class ErrorController
@@ -27,6 +28,7 @@ class ErrorController extends Controller
      */
     public function index(array $urlData): void
     {
+        $seo =
         $viewFile = "Error/Error.html.twig";
         $viewData = [];
 

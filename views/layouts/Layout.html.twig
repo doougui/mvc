@@ -3,12 +3,9 @@
 <head>
     {% block head %}
         <meta charset="UTF-8">
-        <title>{% block title %}{% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="description" content="{% block description %}{% endblock %}">
-        <meta name="keywords" content="{% block keywords %}{% endblock %}">
-        <link rel="canonical" href="{% block canonical %}{% endblock %}" />
+        {% block seo %}{% endblock %}
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <!-- These meta tags are supported by Bing but not Google. You can remove it if you want -->
         <meta name="geo.region" content="BR-SP">

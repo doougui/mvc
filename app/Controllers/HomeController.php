@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Support\Classes\Seo;
+
 /**
  * Class HomeController
  *
@@ -9,6 +11,9 @@ namespace App\Controllers;
  */
 class HomeController extends Controller
 {
+    /** @var $seo Seo */
+    private $seo;
+
     /**
      * Every controller must inherit its parent constructor
      * @param $router
@@ -16,6 +21,7 @@ class HomeController extends Controller
     public function __construct($router)
     {
         parent::__construct($router);
+        $this->seo = new Seo();
     }
 
     /**
@@ -27,6 +33,20 @@ class HomeController extends Controller
     {
         $viewFile = "Home.html.twig";
         $viewData = [];
+
+        $viewData["seo"] = $this->seo->optimize(
+            "Home | MVC",
+            "This is the homepage",
+            site(),
+            "https://via.placeholder.com/1200x628.png?text=This%20is%20the%20home%20example%20image"
+        )->publisher(
+            "page",
+            "author"
+        )->twitterCard(
+            "@creator",
+            "@site",
+            site()
+        )->render();
 
         $this->twig->display($viewFile, $viewData);
     }

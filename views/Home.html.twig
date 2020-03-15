@@ -1,19 +1,21 @@
 {% extends 'layouts/Layout.html.twig' %}
 
-{% block title %}Home{% endblock %}
-{% block description %}This is the home page.{% endblock %}
-{% block canonical %}{{ router.route('home.index') }}{% endblock %}
-{% block keywords %}home, index, homepage{% endblock %}
-{% block jsonld %}
-    <!-- JSON-LD example -->
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "url": "http://www.example.com",
-            "name": "Unlimited Ball Bearings Corp.",
-        }
-    </script>
+{% block head %}
+    {% block seo %}
+        {{ seo | raw }}
+    {% endblock %}
+
+    {% block jsonld %}
+        <!-- JSON-LD example -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "url": "http://www.example.com",
+                "name": "Unlimited Ball Bearings Corp.",
+            }
+        </script>
+    {% endblock %}
 {% endblock %}
 
 {% block content %}

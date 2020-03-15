@@ -2,7 +2,8 @@
 
 namespace App\Controllers;
 
-use App\Support\Classes\ClassBreadcrumb;
+use App\Support\Classes\Breadcrumb;
+use CoffeeCode\Router\Router;
 use Twig\TwigFunction;
 use Twig\Environment;
 use Twig\Extension\DebugExtension;
@@ -14,15 +15,13 @@ use Twig\Loader\FilesystemLoader;
  */
 class Controller
 {
-    /** @var object */
+    /** @var $loader FilesystemLoader */
     private $loader;
 
-    /** @var object */
+    /** @var $twig Environment */
     protected $twig;
 
-    /**
-     * @var
-     */
+    /*** @var $router Router */
     protected $router;
 
     /**
@@ -53,7 +52,7 @@ class Controller
 
         $functions = [
             "breadcrumb" => new TwigFunction("breadcrumb", function () {
-                return (new ClassBreadcrumb)->addBreadcrumb();
+                return (new Breadcrumb)->render();
             }),
             "site" => new TwigFunction("site", function (string $param = null)
             {
@@ -72,8 +71,8 @@ class Controller
             })
         ];
 
-        foreach ($globals as $key => $global) {
-            $this->twig->addGlobal($key, $global);
+        foreach ($globals as $name => $value) {
+            $this->twig->addGlobal($name, $value);
         }
 
         foreach ($functions as $function) {
