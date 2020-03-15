@@ -2,7 +2,9 @@
 
 {% block title %}MVC - Erro {{ errorCode }}{% endblock %}
 {% block description %}Erro {{ errorCode }}{% endblock %}
-{% block keywords %}erro {{ errorCode }}, http code, error{% endblock %}
+<!-- Warning: At this time, you can't use the route method from the router
+package when using dynamic routes, so we recommend that you hard code the link instead -->
+{% block canonical %}{{ site() }}/ooops/{{ errorCode }}{% endblock %}
 
 {% block head %}
     {{ parent() }}

@@ -47,6 +47,10 @@ class Controller
          */
         $this->twig->addExtension(new DebugExtension());
 
+        $globals = [
+            "router" => $this->router
+        ];
+
         $functions = [
             "breadcrumb" => new TwigFunction("breadcrumb", function () {
                 return (new ClassBreadcrumb)->addBreadcrumb();
@@ -67,6 +71,10 @@ class Controller
                 return flash($type, $message);
             })
         ];
+
+        foreach ($globals as $key => $global) {
+            $this->twig->addGlobal($key, $global);
+        }
 
         foreach ($functions as $function) {
             $this->twig->addFunction($function);

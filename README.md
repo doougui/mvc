@@ -101,7 +101,7 @@ _**Exemplo**_:
 ```
 $router->namespace("App\Controllers\Contact");
 $router->group("contato");
-$router->get("/{dinamica}", "ContactController:dinamic", "contact.dinamic");
+$router->get("/{dinamica}", "ContactController:dynamic", "contact.dynamic");
 $router->get("/fixa", "ContactController:fixed", "contact.fixed");
 ```
 

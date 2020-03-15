@@ -1,14 +1,25 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 <head>
     {% block head %}
         <meta charset="UTF-8">
+        <title>{% block title %}{% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="author" content="{% block author %}{% endblock %}">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="description" content="{% block description %}{% endblock %}">
         <meta name="keywords" content="{% block keywords %}{% endblock %}">
-        <title>{% block title %}{% endblock %}</title>
+        <link rel="canonical" href="{% block canonical %}{% endblock %}" />
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <!-- These meta tags are supported by Bing but not Google. You can remove it if you want -->
+        <meta name="geo.region" content="BR-SP">
+        <meta name="geo.placename" content="Place Name">
+        <meta name="geo.position" content="latitude;longitude">
+        <meta name="ICBM" content="latitude, lomgitude">
+        <!-- Add structured data for each page
+         CHeck this link for more information about it:
+         - https://developers.google.com/search/docs/guides/intro-structured-data?visit_id=1-636507697624367960-3670912478&rd=1
+         -->
+        {% block jsonld %}{% endblock %}
     {% endblock %}
 </head>
 <body>
