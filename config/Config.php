@@ -29,3 +29,34 @@ define("DB_CONFIG", [
         PDO::ATTR_CASE => PDO::CASE_NATURAL
     ]
 ]);
+
+/**
+ * MAIL
+ */
+define("MAIL", [
+    "host" => getenv("MAIL_HOST"),
+    "port" => getenv("MAIL_PORT"),
+    "user" => getenv("MAIL_USER="),
+    "passwd" => getenv("MAIL_PASSWD"),
+    "from_name" => getenv("MAIL_FROMNAME"),
+    "from_email" => getenv("MAIL_FROMEMAIL")
+]);
+
+/**
+ * SOCIAL LOGIN: FACEBOOK
+ */
+define("FACEBOOK_LOGIN", [
+    "clientId" => getenv("FACEBOOK_CLIENTID"),
+    "clientSecret" => getenv("FACEBOOK_CLIENTSECRET"),
+    "redirectUri" => SITE["root"]."/facebook",
+    "graphApiVersion" => getenv("FACEBOOK_GRAPHAPIVERSION")
+]);
+
+/**
+ * SOCIAL LOGIN: GOOGLE
+ */
+define("GOOGLE_LOGIN", [
+    "clientId" => getenv("GOOGLE_CLIENTID"),
+    "clientSecret" => getenv("GOOGLE_CLIENTSECRET"),
+    "redirectUri" => SITE["root"]."/google"
+]);
