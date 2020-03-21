@@ -68,6 +68,12 @@ class Controller
                 string $message = null
             ) {
                 return flash($type, $message);
+            }),
+            "old" => new TwigFunction("old", function (
+                string $field,
+                string $defaultValue = null
+            ) {
+                return old($field, $defaultValue);
             })
         ];
 

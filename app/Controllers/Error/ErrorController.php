@@ -11,6 +11,9 @@ use App\Support\Classes\Seo;
  */
 class ErrorController extends Controller
 {
+    /** @var $seo Seo */
+    private $seo;
+
     /**
      * Every controller must inherit its parent constructor
      * @param $router
@@ -18,6 +21,7 @@ class ErrorController extends Controller
     public function __construct($router)
     {
         parent::__construct($router);
+        $this->seo = new Seo();
     }
 
     /**
@@ -28,11 +32,24 @@ class ErrorController extends Controller
      */
     public function index(array $urlData): void
     {
-        $seo =
         $viewFile = "Error/Error.html.twig";
         $viewData = [];
 
         $viewData["errorCode"] = $urlData["errcode"];
+
+        $viewData["seo"] = $this->seo->optimize(
+            "Error | MVC",
+            "Ops. There was an error.",
+            site()."/ooops/{$urlData["errcode"]}",
+            "https://via.placeholder.com/1200x628.png?text=This%20is%20the%20error%20example%20image"
+        )->publisher(
+            "page",
+            "author"
+        )->twitterCard(
+            "@creator",
+            "@site",
+            site()
+        )->render();
 
         switch ($urlData["errcode"]) {
             case 400:

@@ -42,3 +42,21 @@ function flash(string $type = null, string $message = null): ?string
 
     return null;
 }
+
+function setOld(string $field, string $value): string
+{
+    return $_SESSION['old'][$field] = $value;
+}
+
+function old(string $field, string $defaultValue = null): ?string
+{
+    if (
+        !empty($_SESSION['old'][$field])
+        && $fieldValue = $_SESSION['old'][$field]
+    ) {
+        unset($_SESSION['old'][$field]);
+        return $fieldValue;
+    }
+
+    return $defaultValue;
+}

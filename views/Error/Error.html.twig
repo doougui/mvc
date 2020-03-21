@@ -1,13 +1,19 @@
 {% extends "layouts/Layout.html.twig" %}
 
-{% block title %}MVC - Erro {{ errorCode }}{% endblock %}
-{% block description %}Erro {{ errorCode }}{% endblock %}
-<!-- Warning: At this time, you can't use the route method from the router
-package when using dynamic routes, so we recommend that you hard code the link instead -->
-{% block canonical %}{{ site() }}/ooops/{{ errorCode }}{% endblock %}
+{% block seo %}
+    {{ seo | raw }}
+{% endblock %}
 
-{% block head %}
-    {{ parent() }}
+{% block jsonld %}
+    <!-- JSON-LD example -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "url": "http://www.example.com",
+            "name": "Unlimited Ball Bearings Corp.",
+        }
+    </script>
 {% endblock %}
 
 {% block content %}
